@@ -2108,42 +2108,42 @@ function skFx(g,D,echo){var s=g.s,H=g.horse;
   else{vfx(g,{k:"miasma",x:CX,y:CY,t:1.3,r:300});ring(g,CX,CY,300,"#a6e05a",9,.8);part(g,CX,CY,60,"#9be05a",320,.8,4);
     g.mons.forEach(function(m){var k=m.boss?.5:1;m.poiT=8;m.poiD=Math.max(m.poiD||0,D*.75*k);hurt(g,m,D*1.5*k,true);m.vT=Math.max(m.vT,8);m.vuln=Math.max(m.vuln||0,m.boss?.08:.15);part(g,m.x,m.y,3,"#9be05a",70,.5,3)});vfx(g,{k:"plague",x:CX,y:CY,t:1.2,r:280})}}
 var IT=[
-{id:"ark",ic:"📦",n:"법궤",ref:"출애굽기 25장",f:{hp:60,bar:25.0,bdef:0.05}},
-{id:"aaron",ic:"🌱",n:"아론의 싹 난 지팡이",ref:"민수기 17장",f:{dmg:.10,reg:2,mpr:0.3}},
-{id:"jar",ic:"🏺",n:"만나 항아리",ref:"히브리서 9장",f:{reg:4,hp:30,mp:15}},
+{id:"ark",ic:"📦",n:"법궤",ref:"출애굽기 25장",f:{hp:96,bar:25.0,bdef:0.05}},
+{id:"aaron",ic:"🌱",n:"아론의 싹 난 지팡이",ref:"민수기 17장",f:{dmg:.10,reg:3,mpr:0.3}},
+{id:"jar",ic:"🏺",n:"만나 항아리",ref:"히브리서 9장",f:{reg:6,hp:48,mp:15}},
 {id:"harp",ic:"🎶",n:"다윗의 수금",ref:"사무엘상 16장",f:{rate:.14,mpr:0.3}},
 {id:"torch",ic:"🕯️",n:"기드온의 횃불",ref:"사사기 7장",f:{crit:.06,slow:.06,dodge:0.02}},
 {id:"cloak",ic:"🧥",n:"엘리야의 겉옷",ref:"열왕기하 2장",f:{dmg:.08,rate:.08,sd:0.06}},
-{id:"ephod",ic:"👘",n:"대제사장의 에봇",ref:"출애굽기 28장",f:{dmg:.08,hp:38,mp:15}},
-{id:"breast",ic:"💎",n:"판결 흉패",ref:"출애굽기 28장",f:{crit:.05,bar:15,hp:30,bdef:0.05}},
+{id:"ephod",ic:"👘",n:"대제사장의 에봇",ref:"출애굽기 28장",f:{dmg:.08,hp:61,mp:15}},
+{id:"breast",ic:"💎",n:"판결 흉패",ref:"출애굽기 28장",f:{crit:.05,bar:15,hp:48,bdef:0.05}},
 {id:"talent",ic:"🪙",n:"달란트 주머니",ref:"마태복음 25장",f:{gold:.15,mp:10}},
-{id:"ophir",ic:"🏺",n:"오빌의 금",ref:"열왕기상 10장",f:{gold:.20,hp:22,bar:15}},
-{id:"tree",ic:"🍇",n:"생명나무 열매",ref:"요한계시록 22장",f:{hp:90,reg:4,bspd:0.1}},
+{id:"ophir",ic:"🏺",n:"오빌의 금",ref:"열왕기상 10장",f:{gold:.20,hp:35,bar:15}},
+{id:"tree",ic:"🍇",n:"생명나무 열매",ref:"요한계시록 22장",f:{hp:144,reg:6,bspd:0.1}},
 {id:"horn2",ic:"📯",n:"기름 담은 뿔",ref:"사무엘상 16장",f:{skcd:.12,mp:20}},
 {id:"scroll",ic:"📜",n:"일곱 인의 두루마리",ref:"요한계시록 5장",f:{skcd:.08,dmg:.05,sd:0.06}},
 {id:"wing",ic:"🪶",n:"천사의 깃털",ref:"이사야 6장",f:{summ:.20,dodge:0.03}},
-{id:"gideon",ic:"🏺",n:"기드온의 항아리",ref:"사사기 7장",f:{summ:.12,hp:30,mel:0.1}},
-{id:"guardian",ic:"👼",n:"수호 천사의 날개",ref:"💠 레어 · 시편 91편",rare:1,f:{dodge:0.06,hp:60},d:"성이 무너질 때 딱 한 번 체력 60%로 부활하고 3초간 무적 · 회피 +6% · 성 체력 +60"},
+{id:"gideon",ic:"🏺",n:"기드온의 항아리",ref:"사사기 7장",f:{summ:.12,hp:48,mel:0.1}},
+{id:"guardian",ic:"👼",n:"수호 천사의 날개",ref:"💠 레어 · 시편 91편",rare:1,f:{dodge:0.06,hp:96},d:"성이 무너질 때 딱 한 번 체력 60%로 부활하고 3초간 무적 · 회피 +6% · 성 체력 +96"},
 {id:"hourglass",ic:"⏳",n:"멈춘 시간의 모래시계",ref:"💠 레어 · 여호수아 10장",rare:1,f:{bspd:0.25,bar:40},d:"체력이 25% 아래로 떨어지면 3.5초간 무적 (45초마다) · 마나 방어막 재생 속도 +25% · 마나 방어막 +40"},
 {id:"shiv",ic:"⚡",n:"번개 부싯돌",ref:"열왕기상 18장",f:{mpr:0.4},d:"공격 3번째마다 번개가 주변 적 3마리에게 번쩍 · 마나 회복 +0.4/초"},
 {id:"jehu",ic:"🏹",n:"예후의 활",ref:"💠 레어 · 열왕기하 9장",rare:1,f:{dmg:.18,crit:.06,rate:.1},d:"공격력 +18% · 치명타 +6% · 공격 속도 +10%"},
-{id:"sshield",ic:"🧱",n:"느헤미야의 성벽",ref:"💠 레어 · 느헤미야 6장",rare:1,f:{bar:60,bdef:.08,ctr:.25,hp:60},d:"마나 방어막 +60 · 마나 방어막 방어도 +8% · 반격 피해 +25% · 성 체력 +60"},
-{id:"figs",ic:"🫓",n:"히스기야의 무화과 반죽",ref:"💠 레어 · 이사야 38장",rare:1,f:{reg:8,hp:90,ls:.0003,mpr:.5},d:"체력 회복 +16/초 · 성 체력 +90 · 생명력 흡수 +0.03% · 마나 회복 +0.5/초"},
+{id:"sshield",ic:"🧱",n:"느헤미야의 성벽",ref:"💠 레어 · 느헤미야 6장",rare:1,f:{bar:60,bdef:.08,ctr:.25,hp:96},d:"마나 방어막 +60 · 마나 방어막 방어도 +8% · 반격 피해 +25% · 성 체력 +96"},
+{id:"figs",ic:"🫓",n:"히스기야의 무화과 반죽",ref:"💠 레어 · 이사야 38장",rare:1,f:{reg:12,hp:144,ls:.0003,mpr:.5},d:"체력 회복 +24/초 · 성 체력 +144 · 생명력 흡수 +0.03% · 마나 회복 +0.5/초"},
 {id:"ezscroll",ic:"📜",n:"에스겔의 두루마리",ref:"💠 레어 · 에스겔 3장",rare:1,f:{sd:.12,skcd:.10,mp:30,mpr:.6},d:"스킬 효과 +12% · 스킬 쿨타임 단축 +10% · 최대 마나 +30 · 마나 회복 +0.6/초"},
 {id:"flyer",ic:"📄",n:"복음 전단지",ref:"🌟 에픽 · 마가복음 16장 15절",epic:1,f:{dmg:.08,mpr:.3},d:"화살이 표적을 따라가요 (유도 +60%) · ✨ 화살이 적에게 맞으면 4갈래로 갈라져 퍼져요 (갈라진 화살 피해 1/3) · 공격력 +8% · 마나 회복 +0.3/초"},
 {id:"rev",ic:"📘",n:"요한계시록 실상",ref:"🌟 에픽 · 요한계시록 1장",epic:1,f:{dmg:.25,crit:.05,sd:0.1,mp:20},d:"공격력 +25% · 치명타 확률 +5% · 스킬을 제외한 화살 공격이 방어력을 무시하고 들어가요 · 스킬 효과 +10% · 최대 마나 +20"},
-{id:"gen",ic:"📕",n:"천지창조",ref:"🌟 에픽 · 창세기 1장",epic:1,f:{reg:16,rate:.15,ls:.0003,hp:90,bspd:0.2,ctr:0.2},d:"성 체력 +90 · 체력 회복 +32/초 · 공격 속도 +15% · 생명력 흡수 +0.03% · 화살 유도 +50% · 마나 방어막 재생 속도 +20% · 반격 피해 +20%"},
-{id:"revt",ic:"📙",n:"요한계시록 진상 : 이렇게 이루어졌다",ref:"🌟 에픽 · 요한계시록 21장 6절",epic:1,nd:1,f:{dmg:.15,rate:.1,crit:.04,hp:120,reg:8,bar:80,mp:30,mpr:1,skcd:.05,gold:.1,summ:.12,slow:.04,dodge:0.03,bdef:0.05,ctr:0.15,mel:0.15,bspd:0.15},d:"공격력 +15% · 공격 속도 +10% · 치명타 +4% · 성 체력 +120 · 회복 +16/초 · 마나 방어막 +80 · 최대 마나 +30 · 마나 회복 +1/초 · 스킬 대기시간 -5% · 달란트 +10% · 소환수 피해 +12% · 적 감속 +4% · 회피 +3% · 마나 방어막 방어도 +5% · 반격 피해 +15% · 근접 피해 +15% · 마나 방어막 재생 속도 +15%"},
+{id:"gen",ic:"📕",n:"천지창조",ref:"🌟 에픽 · 창세기 1장",epic:1,f:{reg:24,rate:.15,ls:.0003,hp:144,bspd:0.2,ctr:0.2},d:"성 체력 +144 · 체력 회복 +48/초 · 공격 속도 +15% · 생명력 흡수 +0.03% · 화살 유도 +50% · 마나 방어막 재생 속도 +20% · 반격 피해 +20%"},
+{id:"revt",ic:"📙",n:"요한계시록 진상 : 이렇게 이루어졌다",ref:"🌟 에픽 · 요한계시록 21장 6절",epic:1,nd:1,f:{dmg:.15,rate:.1,crit:.04,hp:192,reg:12,bar:80,mp:30,mpr:1,skcd:.05,gold:.1,summ:.12,slow:.04,dodge:0.03,bdef:0.05,ctr:0.15,mel:0.15,bspd:0.15},d:"공격력 +15% · 공격 속도 +10% · 치명타 +4% · 성 체력 +192 · 회복 +24/초 · 마나 방어막 +80 · 최대 마나 +30 · 마나 회복 +1/초 · 스킬 대기시간 -5% · 달란트 +10% · 소환수 피해 +12% · 적 감속 +4% · 회피 +3% · 마나 방어막 방어도 +5% · 반격 피해 +15% · 근접 피해 +15% · 마나 방어막 재생 속도 +15%"},
 {id:"guide",ic:"🕊️",n:"성령의 인도",ref:"요한복음 16장",f:{mpr:0.5},d:"화살이 표적을 따라가요 (유도 +60%) · 마나 회복 +0.5/초"},
 {id:"sodom",ic:"🌋",n:"소돔의 유황불",ref:"💠 레어 · 창세기 19장",rare:1,f:{ctr:0.35,dmg:.1},d:"5타마다 화살이 맞은 곳에서 폭발해 주변 적에게 피해 (화살 피해의 70%) · 공격력 +10% · 반격 피해 +35%"},
 {id:"giant",ic:"🗡️",n:"골리앗의 창",ref:"💠 레어 · 사무엘상 17장",rare:1,f:{dmg:1.0,rate:-.32,mel:0.4},d:"공격력 +100% · 공격 속도 -32% · 화살 크기 +50% (느리지만 묵직한 한 발) · 근접 피해 +40%"},
-{id:"tablet",ic:"🪨",n:"모세의 돌판",ref:"출애굽기 31장",f:{hp:75,bdef:0.06,sd:0.06}},
-{id:"basket",ic:"🧺",n:"열두 광주리",ref:"마태복음 14장",f:{reg:4,hp:45},d:"적 12마리를 쓰러뜨릴 때마다 성 체력 2% 회복 · 회복 +8/초 · 체력 +45"},
+{id:"tablet",ic:"🪨",n:"모세의 돌판",ref:"출애굽기 31장",f:{hp:120,bdef:0.06,sd:0.06}},
+{id:"basket",ic:"🧺",n:"열두 광주리",ref:"마태복음 14장",f:{reg:6,hp:72},d:"적 12마리를 쓰러뜨릴 때마다 성 체력 2% 회복 · 회복 +12/초 · 체력 +72"},
 {id:"crook",ic:"🦯",n:"선한 목자의 지팡이",ref:"요한복음 10장",f:{dmg:.06,crit:.04},d:"보스·정예에게 주는 화살 피해 +12% · 공격력 +6% · 치명타 +4%"},
 {id:"bush",ic:"🌳",n:"꺼지지 않는 떨기나무",ref:"출애굽기 3장",f:{sd:0.08,mpr:0.3},d:"불타는 적에게 주는 화살 피해 +15% · 스킬 효과 +8% · 마나 회복 +0.3/초"},
-{id:"salt",ic:"🧂",n:"세상의 소금",ref:"마태복음 5장",f:{hp:45,reg:4},d:"성이 받는 피해 -7% · 체력 +45 · 회복 +8/초"},
+{id:"salt",ic:"🧂",n:"세상의 소금",ref:"마태복음 5장",f:{hp:72,reg:6},d:"성이 받는 피해 -7% · 체력 +72 · 회복 +12/초"},
 {id:"lampst",ic:"🪔",n:"등경 위의 등불",ref:"마태복음 5장",f:{crit:.05,rate:.06},d:"치명타 피해 +0.2배 · 치명타 +5% · 공격 속도 +6%"},
-{id:"rahab",ic:"🧶",n:"라합의 붉은 줄",ref:"여호수아 2장",f:{dodge:0.04,hp:45},d:"체력이 35% 아래면 회피 +12% · 회피 +4% · 체력 +45"},
+{id:"rahab",ic:"🧶",n:"라합의 붉은 줄",ref:"여호수아 2장",f:{dodge:0.04,hp:72},d:"체력이 35% 아래면 회피 +12% · 회피 +4% · 체력 +72"},
 {id:"anchor",ic:"⚓",n:"영혼의 닻",ref:"히브리서 6장",f:{bar:40,bspd:0.15,bdef:0.05}},
 {id:"honey",ic:"🍯",n:"사자 속의 꿀",ref:"사사기 14장",f:{dmg:.12,mel:0.15,ls:.0002},d:"공격력 +12% · 근접 피해 +15% · 생명력 흡수 +0.02%"},
 {id:"net",ic:"🕸️",n:"베드로의 그물",ref:"누가복음 5장",f:{gold:.12,summ:.10},d:"화살에 맞은 일반 적을 10% 확률로 그물에 1초 묶어요 · 달란트 +12% · 소환수 피해 +10%"},
@@ -2381,7 +2381,7 @@ var UPG=[
 {id:"wpn",ic:"⚔️",n:"무기 강화",d:"물리 공격력 · 방어 관통",lt:["물리 공격력 +10% · 방어 관통 +5%","물리 공격력 +10% · 방어 관통 +5%","물리 공격력 +20% · 방어 관통 +5%","물리 공격력 +30% · 방어 관통 +5%","물리 공격력 +30% · 방어 관통 +5%"],costs:[300,750,1800,4200,8400],max:5,basic:1,old:"atk"},
 {id:"mas",ic:"🎯",n:"숙련도 강화",d:"공격 속도 · 치명타 · 치명 피해",lt:["공격 속도 +15% · 치명타 +3% · 치명 피해 +0.08배","공격 속도 +15% · 치명타 +3% · 치명 피해 +0.08배","공격 속도 +30% · 치명타 +3% · 치명 피해 +0.08배","공격 속도 +30% · 치명타 +3% · 치명 피해 +0.08배","공격 속도 +30% · 치명타 +3% · 치명 피해 +0.08배"],costs:[300,750,1800,4200,8400],max:5,basic:1,old:"rate"},
 {id:"enl",ic:"✨",n:"깨달음 강화",d:"마법 공격력 · 정신 관통 · 속성 공격력",lt:["마법 공격력 +10% · 정신 관통 +5% · 속성 공격력 +8%","마법 공격력 +10% · 정신 관통 +5% · 속성 공격력 +8%","마법 공격력 +20% · 정신 관통 +5% · 속성 공격력 +8%","마법 공격력 +30% · 정신 관통 +5% · 속성 공격력 +8%","마법 공격력 +30% · 정신 관통 +5% · 속성 공격력 +8%"],costs:[300,750,1800,4200,8400],max:5,basic:1},
-{id:"wall",ic:"🧱",n:"성전 벽 강화",d:"최대 체력 · 마나 · 방어력 · 정신력 · 회피",lt:"성 체력 +25% (최소 +90) · 회복 +2.4/초 · 마나 +25% · 방어력 +8 · 정신력 +8 · 회피 +1%",costs:[200,480,1100,2600,5200],max:5,basic:1,old:"hp"},
+{id:"wall",ic:"🧱",n:"성전 벽 강화",d:"최대 체력 · 마나 · 방어력 · 정신력 · 회피",lt:"성 체력 +37.5% (최소 +135) · 회복 +3.6/초 · 마나 +25% · 방어력 +8 · 정신력 +8 · 회피 +1%",costs:[200,480,1100,2600,5200],max:5,basic:1,old:"hp"},
 {id:"unity",ic:"🤝",n:"단결력 강화",d:"마나 방어막 · 방어막 재생 · 스킬 가속",lt:"마나 방어막 +최대 마나의 6% · 방어막 재생 +15% · 스킬 가속 +5",costs:[200,480,1100,2600,5200],max:5,basic:1,old:"mana"}];
 var LUP={base:20000,add:10000,p:.30,max:5,per:3};
 var LGC={spirit:"170,140,255",covenant:"255,110,130",river:"120,235,200",comet:"255,150,60",glacier:"150,225,255",judge:"255,225,110",fortress:"255,215,120",dpierce:"235,240,255",thunder:"255,245,130",revel:"255,200,150",starfood:"255,235,150",army:"255,170,110",season:"190,235,110",firstres:"255,190,235"};
@@ -2623,7 +2623,7 @@ function stats(g){var L=g.lv,U=g.uq,G=g.lg,I=ibonus(g),Q=g.gu,C=Q.castle||0,s={}
   if(f0=fM(g,"joy",0))s.goldM+=.2*f0;
   if(f0=fM(g,"love",0)){s.ald*=1+.3*f0;s.fdm*=1+.3*f0}
   if(f0=fM(g,"temper",0)){s.dotM*=1+.3*f0;s.fzDot*=1+.3*f0;s.slow=Math.min(.6,s.slow+.08*f0)}
-  var UW=Math.min(5,Math.max(Q.wpn||0,Q.atk||0)),UM=Math.min(5,Math.max(Q.mas||0,Q.rate||0)),UE=Math.min(5,Q.enl||0),UL=Math.min(5,Math.max(Q.wall||0,Q.hp||0)),UU=Math.min(5,Math.max(Q.unity||0,Q.mana||0));s.up={w:UW,m:UM,e:UE,l:UL,u:UU};var hpU=UL;s.dmg*=1+[0,.10,.20,.40,.70,1.00][UW];s.rate*=(1+[0,.15,.30,.60,.90,1.20][UM])*(1+.06*C);s.maxhp+=hpU*Math.max(90,(240+270*C)*.25);s.regen+=1.2*hpU;s.crit=Math.min(.85,s.crit+.035*(Q.crit||0)+.03*UM+.03*C);s.take*=(1-.04*hpU)*(1-.05*C);s.sd+=.1*C;s.mpReg+=.5*C;s.pen=.05*UW+A([.05,.09,.14,.2],L.sword);var P=g.prep||{};s.dmg*=1+.01*(P.atk||0);s.maxhp*=1+.02*(P.hp||0);s.regen+=.15*(P.hp||0);s.mpMax*=1+.015*(P.mp||0);s.mpReg+=.1*(P.mp||0);var mpU=UL;s.mpMax=Math.round(s.mpMax+mpU*Math.max(30,(100+50*C)*.25));s.mpReg+=.003*s.mpMax*mpU;s.sd+=.08*mpU;
+  var UW=Math.min(5,Math.max(Q.wpn||0,Q.atk||0)),UM=Math.min(5,Math.max(Q.mas||0,Q.rate||0)),UE=Math.min(5,Q.enl||0),UL=Math.min(5,Math.max(Q.wall||0,Q.hp||0)),UU=Math.min(5,Math.max(Q.unity||0,Q.mana||0));s.up={w:UW,m:UM,e:UE,l:UL,u:UU};var hpU=UL;s.dmg*=1+[0,.10,.20,.40,.70,1.00][UW];s.rate*=(1+[0,.15,.30,.60,.90,1.20][UM])*(1+.06*C);s.maxhp+=hpU*Math.max(135,(240+270*C)*.375);s.regen+=1.8*hpU;s.crit=Math.min(.85,s.crit+.035*(Q.crit||0)+.03*UM+.03*C);s.take*=(1-.04*hpU)*(1-.05*C);s.sd+=.1*C;s.mpReg+=.5*C;s.pen=.05*UW+A([.05,.09,.14,.2],L.sword);var P=g.prep||{};s.dmg*=1+.01*(P.atk||0);s.maxhp*=1+.03*(P.hp||0);s.regen+=.25*(P.hp||0);s.mpMax*=1+.015*(P.mp||0);s.mpReg+=.1*(P.mp||0);var mpU=UL;s.mpMax=Math.round(s.mpMax+mpU*Math.max(30,(100+50*C)*.25));s.mpReg+=.003*s.mpMax*mpU;s.sd+=.08*mpU;
   if(g.nt){s.dmg*=1.15;s.maxhp+=80;s.regen+=1}
   if(g.gst)s.dmg*=1+.02*g.gst;
   if(g.cert){s.dmg*=1.2;s.maxhp+=150}
@@ -2683,7 +2683,7 @@ function stats(g){var L=g.lv,U=g.uq,G=g.lg,I=ibonus(g),Q=g.gu,C=Q.castle||0,s={}
   bondStats(g,s,F,s.fk);
   /* 장인의 숙련: 4단계 카드 1장마다 +4% */var mN=0;for(var mk in L)if(L[mk]>=4)mN++;if(mN){var mK=1+.04*mN;s.dmg*=mK;s.sd*=mK;s.msd*=mK}
   /* 트루 모드 축복: 기본 공격·스킬마다 다르게 강화 */if(g.mode==="true"){s.dmg*=1.15;s.rate*=1.08;s.sd*=1.25;s.skcd*=.9;s.msd*=1.25;s.escd*=.88;s.mpReg*=1.15;s.multi+=1;s.pl+=1;s.bl+=1;s.crit=Math.min(.85,s.crit+.06);s.cm+=.2;s.fdm*=1.3;s.ald*=1.3;if(s.fol>0)s.fol+=1;if(s.al>0)s.al+=1}
-  s.ald*=.6;s.fdm*=.6;s.maxhp=Math.round(s.maxhp);s.mpMax=Math.round(s.mpMax);s.regen*=2*1.3;s.ls*=1.3;s.mc=Math.round(s.mc);s.muc=Math.round(s.muc);if(s.emc)s.emc=Math.round(s.emc);statX(g,s);return s}
+  s.ald*=.6;s.fdm*=.6;s.maxhp=Math.round(s.maxhp);s.mpMax=Math.round(s.mpMax);s.regen*=2*1.3*1.2;s.maxhp=Math.round(s.maxhp*1.2);s.ls*=1.3;s.mc=Math.round(s.mc);s.muc=Math.round(s.muc);if(s.emc)s.emc=Math.round(s.emc);statX(g,s);return s}
 
 /* v19 롤 스타일 능력치: 물리·마법 공격력 · 방어/정신 관통 · 방어력/정신력 · 흡혈/주문 흡혈 · 스킬 가속
    - 받는 물리 피해 = 100/(100+방어력), 받는 마법 피해 = 100/(100+정신력)
@@ -3506,7 +3506,7 @@ function refresh(g){var old=g.maxhp;g.ver++;var s=getS(g);g.s=s;bondChk(g);g.max
 var PREP=[{id:"atk",tb:"w",ic:"⚔️",n:"물리 공격력",d:"+1%",per:1000,max:150},{id:"pen",tb:"w",ic:"🗡️",n:"방어 관통",d:"+0.3%",per:1200,max:60},
 {id:"rate",tb:"m",ic:"⚡",n:"공격 속도",d:"+0.8%",per:1000,max:100},{id:"crit",tb:"m",ic:"💥",n:"치명타",d:"+0.25%",per:1200,max:80},{id:"cm",tb:"m",ic:"✴️",n:"치명 피해",d:"+0.02배",per:1200,max:60},
 {id:"ap",tb:"e",ic:"🔮",n:"마법 공격력",d:"+1%",per:1000,max:150},{id:"mpen",tb:"e",ic:"🌀",n:"정신 관통",d:"+0.3%",per:1200,max:60},{id:"el",tb:"e",ic:"🌈",n:"속성 공격력",d:"+1%",per:1000,max:100},{id:"mind",tb:"e",ic:"🧠",n:"마인드 컨트롤",d:"+0.25%",per:1200,max:80},
-{id:"hp",tb:"l",ic:"❤️",n:"체력 · 회복",d:"성 체력 +2% · 회복 +0.3/초",per:900,max:100},{id:"mp",tb:"l",ic:"💧",n:"마나 · 마나 회복",d:"최대 마나 +1.5% · 회복 +0.2/초",per:600,max:100},{id:"df",tb:"l",ic:"🛡️",n:"방어력",d:"+2",per:1200,max:75},{id:"mr",tb:"l",ic:"🧠",n:"정신력",d:"+2",per:1200,max:75},{id:"dg",tb:"l",ic:"💨",n:"회피",d:"+0.15%",per:1500,max:50},
+{id:"hp",tb:"l",ic:"❤️",n:"체력 · 회복",d:"성 체력 +3% · 회복 +0.5/초",per:900,max:100},{id:"mp",tb:"l",ic:"💧",n:"마나 · 마나 회복",d:"최대 마나 +1.5% · 회복 +0.2/초",per:600,max:100},{id:"df",tb:"l",ic:"🛡️",n:"방어력",d:"+2",per:1200,max:75},{id:"mr",tb:"l",ic:"🧠",n:"정신력",d:"+2",per:1200,max:75},{id:"dg",tb:"l",ic:"💨",n:"회피",d:"+0.15%",per:1500,max:50},
 {id:"bar",tb:"u",ic:"🔷",n:"마나 방어막",d:"+최대 마나의 1%",per:900,max:100},{id:"bsp",tb:"u",ic:"♻️",n:"방어막 재생",d:"+2%",per:900,max:50},{id:"hst",tb:"u",ic:"⏱️",n:"스킬 가속",d:"+1",per:1200,max:60}];
 var PTAB=[["w","⚔️","무기"],["m","🎯","숙련도"],["e","✨","깨달음"],["l","🧱","성전 벽"],["u","🤝","단결력"]];
 function prepBuy(g,id,n){if(g.state!=="prep")return false;g.prep=g.prep||{};var p=PREP.filter(function(x){return x.id===id})[0],b=0;while(b<n&&(g.prep[id]||0)<p.max&&g.gold>=p.per){g.gold-=p.per;g.prep[id]=(g.prep[id]||0)+1;b++}if(b){refresh(g);ring(g,CX,CY,70,"#ffe066",4,.4)}return b>0}
@@ -3851,7 +3851,7 @@ function morB(){return '<span class="mor" onclick="event.stopPropagation();var b
 function spD(l){return l.sp?l.sp.map(function(x){return '<span class="dl">✨ <b>'+x[0]+'</b>: '+x[1]+'</span>'}).join(""):""}
 function shD(t,n){var P=dSeg(String(t).replace(/^Lv\d+:\s*/,""));n=n||2;if(P.length<=n&&String(t).length<44)return{s:'<span class="s2">'+t+'</span>',m:"",d:""};return{s:'<span class="s2">'+P.slice(0,n).map(function(x){return x.replace(/\s*\([^)]*\)/g,"")}).join(" · ")+'</span>',m:morB(),d:'<span class="dtl">'+P.map(function(x){return '<span class="dl">• '+x+'</span>'}).join("")+'</span>'}}
 function seg(t,n){return String(t).split(' · ✨')[0].split(' · ').slice(0,n||2).join(' · ')}
-function comboL(id,fin){var pt=partner(id),h='';if(fin){if(pt&&!g.lg[pt.l.id])h='<br><small class="pt">🌈 추천 조합: '+pt.p.ic+' '+unm(pt.p)+(g.lv[pt.p.id]?' ✔':'')+'</small>';return h}
+function comboL(id,fin){var pt=partner(id),h='';if(fin){if(pt&&!g.lg[pt.l.id])h='<small class="pt" style="display:block;margin-top:2px;font-size:9px">🌈 추천 조합: '+pt.p.ic+' '+unm(pt.p)+(g.lv[pt.p.id]?' ✔':'')+'</small>';return h}
   var a=(SYNP[id]||[]).filter(function(x){return!pt||x!==pt.p.id});if(!(pt&&!g.lg[pt.l.id])&&!a.length)return '';
   return '<br><small class="pt">추천 조합: '+(pt&&!g.lg[pt.l.id]?pt.p.ic+' '+unm(pt.p)+(g.lv[pt.p.id]?' ✔':''):'')+(a.length?'<span class="syn">'+(pt&&!g.lg[pt.l.id]?'&nbsp;·&nbsp;':'')+a.map(function(x){var q=GL.byId(GL.UP,x);return '<i class="'+(g.lv[x]?'on':'')+'">'+q.ic+'</i>'}).join('')+'</span>':'')+'</small>'}
 function synI(id){var a=SYNP[id];if(!a)return '';return '<span class="syn">🔗 '+a.map(function(x){var q=GL.byId(GL.UP,x);return '<i class="'+(g.lv[x]?'on':'')+'">'+q.ic+'</i>'}).join('')+'</span>'}
