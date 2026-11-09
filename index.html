@@ -2087,6 +2087,8 @@ function effTick(g,dt,s){var T=g.rT=g.rT||{},i,j,R=g.rel||[],U=g.uq,G=g.lg;mkTic
   if(tk("solomon",s.awk&&s.awk.solomon?6:10,!!U.solomon)){g.mp=Math.min(s.mpMax,g.mp+s.mpMax*.25);g.sk=Math.max(0,g.sk-3);g.uk=Math.max(0,g.uk-3);ring(g,CX,CY,90,"#c9a6ff",6,.5);if(g.vfx)g.fx.push({x:CX,y:CY-64,t:.9,txt:"📜 지혜의 충전",c:"#d9c2ff",big:1})}
   /* unique: elisha echo */
   if(g.echoT>0){g.echoT-=dt;if(g.echoT<=0){skFx(g,g.echoD*(s.awk&&s.awk.elisha?1:.5),1)}}
+  /* 예수님(성령체) 스킬: 성령의 권능 */
+  if(tk("jesus",35,g.disc==="jesus"&&!g.surv)){g.hp=Math.min(g.maxhp,g.hp+g.maxhp*.1);g.hb=Math.min(g.maxhp*.3,(g.hb||0)+g.maxhp*.15);g.hbT=Math.max(g.hbT||0,8);g.inv=Math.max(g.inv||0,1);g.mkAs=Math.max(g.mkAs||0,g.t+5);g.curE=0;g.mons.forEach(function(q){if(q.hp>0){q.slT=Math.max(q.slT,3);q.slv=Math.max(q.slv,q.boss?.4:.7);if(!q.boss)q.frz=Math.max(q.frz||0,1)}});ring(g,CX,CY,300,"#fff3a0",10,.9);ring(g,CX,CY,180,"#ffffff",6,.6);part(g,CX,CY,70,"#fff3a0",340,.9,4);if(g.vfx)g.fx.push({x:CX,y:CY-70,t:1.2,txt:"✝️ 평안을 너희에게 · 축복",c:"#fff3a0",big:1})}
   /* apostle john */
   if(tk("john",5,g.disc==="john"&&g.hp<g.maxhp*.5)){g.hb=Math.min(g.maxhp*.3,(g.hb||0)+g.maxhp*.03);g.hbT=Math.max(g.hbT||0,6);ring(g,CX,CY,70,"#ffb0d0",4,.4)}
   /* final: daniel censer */
@@ -2157,18 +2159,20 @@ var IT=[
 {id:"raven",ic:"🐦‍⬛",n:"엘리야의 까마귀",ref:"열왕기상 17장",f:{bspd:0.1},d:"4초마다 까마귀 떼가 무작위 적 3마리를 쪼아요 · 마나 방어막 재생 속도 +10%"},
 {id:"sunshield",ic:"🔆",n:"태양빛 방패",ref:"시편 84편",f:{bdef:0.08,ctr:0.2},d:"성 가까이 있는 적에게 0.5초마다 빛의 화상 피해 · 마나 방어막 방어도 +8% · 반격 피해 +20%"}];
 var DISC=[
-{id:"peter",ic:"🗝️",n:"베드로",d:"반석 위에 세운 교회 · 공격력 ×1.2 · 공격 속도 ×1.1 · 성 체력 +90 · 받는 피해 -10% · 치명타 +5% · ✨ 치명타로 적을 쓰러뜨리면 반석 파편이 튀어 주변 피해",ref:"마태복음 16장"},
-{id:"andrew",ic:"🎣",n:"안드레",d:"사람을 낚는 어부 · 달란트 획득 +35% · 공격력 +10% · 화살 크기 +30% · ✨ 적을 처치하면 10% 확률로 그물을 던져 주변 적 2초 둔화",ref:"마태복음 4장"},
-{id:"james",ic:"🦁",n:"야고보",d:"우레의 아들 · 공격력 +20% · 치명타 피해 +0.4배 · ✨ 10번째 공격마다 우레가 떨어져 범위 피해",ref:"마가복음 3장"},
-{id:"john",ic:"💗",n:"요한",d:"사랑받는 제자 · 성 체력 +120 · 체력 회복 +16/초 · 받는 피해 -8% · ✨ 체력 50% 이하일 때 5초마다 사랑의 마나 방어막 (최대 체력 3%)",ref:"요한복음 13장"},
-{id:"philip",ic:"🍞",n:"빌립",d:"오병이어를 아뢴 제자 · 마나 방어막 +90 · 체력 회복 +8/초 · 마나 방어막 재생 대기 -20% · ✨ 마나 방어막이 가득 찬 동안 회복 +12/초",ref:"요한복음 6장"},
-{id:"bartholomew",ic:"🌳",n:"바돌로매",d:"무화과나무 아래의 나다나엘 · 스킬 효과 +40% · 스킬 마나 -10% · 마나 회복 +1/초 · ✨ 스킬을 쓰면 다음 화살 5발이 무화과 씨앗이 되어 터져요",ref:"요한복음 1장"},
-{id:"matthew",ic:"💰",n:"마태",d:"세리에서 제자로 · 달란트 획득 +60% · 공격력 +8% · ✨ 적을 처치하면 2% 확률로 금화가 터져 주변 피해 + 달란트",ref:"마태복음 9장"},
-{id:"thomas",ic:"🔍",n:"도마",d:"확인하고 믿은 제자 · 치명타 +12% · 치명타 피해 +0.35배 · ✨ 체력 15% 이하인 적에게는 반드시 치명타",ref:"요한복음 20장"},
-{id:"jamesalph",ic:"📜",n:"작은 야고보",d:"행함 있는 믿음 · 공격 속도 +22% · 화살 속도 +20% · ✨ 공격 속도가 기본의 2배를 넘으면 화살 +1",ref:"야고보서 2장"},
-{id:"thaddaeus",ic:"🕊️",n:"다대오",d:"조용한 충성 · 적 이동 속도 -10% · 마나 방어막 +50 · ✨ 마나 방어막이 있는 동안 받는 피해 -10%",ref:"요한복음 14장"},
-{id:"simon",ic:"🔥",n:"셀롯 시몬",d:"열심당원의 열정 · 공격력 +15% · 화염 피해 +20/초 · ✨ 불타는 적에게 주는 피해 +15%",ref:"누가복음 6장"},
-{id:"matthias",ic:"🎲",n:"맛디아",d:"제비뽑아 세워진 사도 · 공격력 +12% · 공격 속도 +10% · 성 체력 +75 · 화살 크기·속도 +10% · ✨ 라운드마다 제비를 뽑아 무작위 능력치 하나가 강해져요",ref:"사도행전 1장"}];
+{id:"jesus",ic:"✝️",n:"예수님 (성령체)",jesus:1,d:"하늘의 주 · 공격력 ×1.7 · 공격 속도 ×1.3 · 성 체력 +300 · 받는 피해 -22% · 치명타 +12% · 치명타 피해 +0.6배 · 회복 +16/초 · 마나 방어막 +120 · 달란트 +50% · 화살 크기·속도 +20% · ✨ 스킬: 35초마다 [평안의 축복] 성 체력 10% 회복 + 보호막 + 1초 무적 + 5초간 공격 속도 증가 + 저주 해제 + 모든 적 둔화(일반 적은 1초 정지)",ref:"요한복음 14장"},
+{id:"peter",ic:"🗝️",n:"베드로",d:"올라운드 · 반석 위에 세운 교회 · 공격력 ×1.3 · 공격 속도 ×1.15 · 성 체력 +150 · 받는 피해 -12% · 치명타 +8% · 화살 속도 +10% · ✨ 치명타로 적을 쓰러뜨리면 반석 파편이 튀어 주변 피해",ref:"마태복음 16장"},
+{id:"andrew",ic:"🎣",n:"안드레",d:"제어(둔화) 빌드 · 적 이동 속도 -8% · 공격력 +12% · 화살 크기 +30% · 달란트 +20% · ✨ 적을 처치하면 15% 확률로 그물을 던져 주변 적 2초 둔화",ref:"마태복음 4장"},
+{id:"james",ic:"🦁",n:"야고보",d:"치명타 폭딜 빌드 · 공격력 +18% · 치명타 피해 +0.55배 · 치명타 +4% · ✨ 8번째 공격마다 우레가 떨어져 범위 피해",ref:"마가복음 3장"},
+{id:"john",ic:"💗",n:"요한",d:"체력·회복 탱커 빌드 · 성 체력 +170 · 체력 회복 +14/초 · 받는 피해 -10% · ✨ 체력 50% 이하일 때 5초마다 사랑의 마나 방어막 (최대 체력 3%)",ref:"요한복음 13장"},
+{id:"philip",ic:"🍞",n:"빌립",d:"마나 방어막 빌드 · 마나 방어막 +130 · 체력 회복 +6/초 · 방어막 재생 대기 -25% · ✨ 방어막이 가득 찬 동안 회복 +12/초",ref:"요한복음 6장"},
+{id:"bartholomew",ic:"🌳",n:"바돌로매",d:"스킬 빌드 · 스킬 효과 +45% · 스킬 마나 -12% · 마나 회복 +1.5/초 · ✨ 스킬을 쓰면 다음 화살 5발이 무화과 씨앗이 되어 터져요",ref:"요한복음 1장"},
+{id:"matthew",ic:"💰",n:"마태",d:"달란트(경제) 빌드 · 달란트 획득 +70% · 공격력 +8% · ✨ 적을 처치하면 2% 확률로 금화가 터져 주변 피해 + 달란트",ref:"마태복음 9장"},
+{id:"thomas",ic:"🔍",n:"도마",d:"처형(치명) 빌드 · 치명타 +14% · 치명타 피해 +0.4배 · ✨ 체력 15% 이하인 적에게는 반드시 치명타",ref:"요한복음 20장"},
+{id:"jamesalph",ic:"📜",n:"작은 야고보",d:"연사·다발 빌드 · 공격 속도 +26% · 화살 속도 +22% · ✨ 공격 속도가 기본의 2배를 넘으면 화살 +1",ref:"야고보서 2장"},
+{id:"thaddaeus",ic:"🕊️",n:"다대오",d:"수비 빌드 · 적 이동 속도 -10% · 마나 방어막 +70 · 회피 +6% · ✨ 마나 방어막이 있는 동안 받는 피해 -10%",ref:"요한복음 14장"},
+{id:"simon",ic:"🔥",n:"셀롯 시몬",d:"화염 빌드 · 공격력 +15% · 화염 피해 +28/초 · ✨ 불타는 적에게 주는 피해 +15%",ref:"누가복음 6장"},
+{id:"matthias",ic:"🎲",n:"맛디아",d:"만능(무작위) 빌드 · 공격력 +12% · 공격 속도 +10% · 성 체력 +75 · 화살 크기·속도 +10% · ✨ 라운드마다 제비를 뽑아 무작위 능력치 하나가 강해져요",ref:"사도행전 1장"}];
+var JESUS_P=.15;
 /* 성경 장면: 3~15라운드 구약 · 16~29라운드 신약 · 라운드 클리어 때 20% 확률 · 한 게임 최대 3번 · 구약은 최대 2번이고, 구약이 2번 나오면 16라운드에 신약이 반드시 나와요 · 선택지마다 얻는 것(약 7)이 치르는 대가(약 3)보다 커요 */
 var SCP=.2,SCMAX=3;
 /* v19 피해 종류: DMT "p" 물리(화살·근접) / "m" 마법(소환수·스킬·마법). DMTD = 화살 원래 속성. CDT = 성이 받는 피해 종류("m"이면 정신력으로 막아요) */
@@ -2604,17 +2608,18 @@ function stats(g){var L=g.lv,U=g.uq,G=g.lg,I=ibonus(g),Q=g.gu,C=Q.castle||0,s={}
   if(g.seal7){s.dmg*=1.3;s.maxhp*=1.25;s.take*=.88;s.rate*=1.1;s.mpMax*=1.2;s.regen+=4}
   if(g.truth){s.dmg*=1.2;s.maxhp*=1.2;s.take*=.9;s.goldM=(s.goldM||1)*1.2}
   switch(g.disc){
-  case"peter":s.dmg*=1.2;s.rate*=1.1;s.maxhp+=90;s.take*=.9;s.crit=Math.min(.85,s.crit+.05);break;
-  case"andrew":s.goldM+=.35;s.dmg*=1.1;s.psz+=.3;break;
-  case"james":s.dmg*=1.2;s.cm+=.4;break;
-  case"john":s.maxhp+=120;s.regen+=8;s.take*=.92;break;
-  case"philip":s.bar+=90;s.regen+=4;s.barDelay*=.8;break;
-  case"bartholomew":s.sd+=.4;s.mc*=.9;s.mpReg+=1;break;
-  case"matthew":s.goldM+=.6;s.dmg*=1.08;break;
-  case"thomas":s.crit=Math.min(.85,s.crit+.12);s.cm+=.35;break;
-  case"jamesalph":s.rate*=1.22;s.psp+=.2;break;
-  case"thaddaeus":s.slow=Math.min(.6,s.slow+.1);s.bar+=50;break;
-  case"simon":s.dmg*=1.15;s.burn+=20;break;
+  case"jesus":s.dmg*=1.7;s.rate*=1.3;s.maxhp+=300;s.take*=.78;s.crit=Math.min(.85,s.crit+.12);s.cm+=.6;s.regen+=16;s.bar+=120;s.goldM+=.5;s.psp+=.2;s.psz+=.2;break;
+  case"peter":s.dmg*=1.3;s.rate*=1.15;s.maxhp+=150;s.take*=.88;s.crit=Math.min(.85,s.crit+.08);s.psp+=.1;break;
+  case"andrew":s.goldM+=.2;s.dmg*=1.12;s.psz+=.3;s.slow=Math.min(.6,s.slow+.08);break;
+  case"james":s.dmg*=1.18;s.cm+=.55;s.crit=Math.min(.85,s.crit+.04);break;
+  case"john":s.maxhp+=170;s.regen+=14;s.take*=.9;break;
+  case"philip":s.bar+=130;s.regen+=6;s.barDelay*=.75;break;
+  case"bartholomew":s.sd+=.45;s.mc*=.88;s.mpReg+=1.5;break;
+  case"matthew":s.goldM+=.7;s.dmg*=1.08;break;
+  case"thomas":s.crit=Math.min(.85,s.crit+.14);s.cm+=.4;break;
+  case"jamesalph":s.rate*=1.26;s.psp+=.22;break;
+  case"thaddaeus":s.slow=Math.min(.6,s.slow+.1);s.bar+=70;s.dodge=(s.dodge||0)+.06;break;
+  case"simon":s.dmg*=1.15;s.burn+=28;break;
   case"matthias":s.dmg*=1.12;s.rate*=1.1;s.maxhp+=75;s.psp+=.1;s.psz+=.1;break;break}
   s.seaShred=A([.09,.17,.25,.35],L.sea);s.seaAmp=A([.04,.07,.1,.14],L.sea);s.seaSyn=(L.sea||0)>0&&(L.samson||0)>0;
   s.ls=A([.0006,.001,.0015,.0022],L.blood)+(G.covenant?.0008:0)+I.ls;s.ignArm=g.items.indexOf('rev')>=0;s.lsLow=(L.blood||0)>=4;s.mannaH=(L.manna||0)>=4;if(G.covenant){s.melR+=39;s.melT*=.74;s.melD*=1.95}if(G.river){s.mpReg+=5.2;s.sd+=.39;s.mcd=Math.max(.4,s.mcd-.26);s.riverDef=1}
@@ -2800,7 +2805,7 @@ function rdFor(g,i){var r=RD[i];if(!r)return r;var o={},k,rn=i+1;for(k in r)o[k]
   if(rn===33){o.n="일곱 금 촛대장막";o.ref="요한계시록 1장 · 2장 5절";o.tx="촛대 사이를 거니시는 이의 경고! 일곱 별이 떨어지고 해와 달과 별이 어두워져요";o.b="candle";o.el=1;o.bb=1;o.g=[["ghost",14],["skull",10],["shorse",8]];o.ph=[{b:["candle"]},{b:["stars"],x:1.3,tT:48,nm:"일곱 별",em:"🌟",ab:[{sil:[14,2.5],rain:[9,6],bolt:[6,.08],rage:1}]},{b:["fsun","fmoon","fstar"],x:1.7,hs:.5,tT:54,nm:"떨어진 해, 달, 별",em:"🌞🌝⭐"}]}
   if(rn===35){o.n="무저갱";o.ref="요한계시록 9장 · 13장 · 17장";o.tx="무저갱이 열리고 일곱 머리 짐승이 올라와요… 그 위에 큰 음녀가 앉았어요";o.b="abyss";o.el=1;o.bb=1;o.g=[["locust",20],["scorpion",12],["bat",12],["skull",8]];o.ph=[{b:["abyss"]},{b:["beast7"],x:1.5,tT:50,nm:"일곱 머리와 열 뿔 가진 짐승",em:"🐲"},{b:["whore"],x:1.9,tT:58,nm:"큰 음녀 바벨론",em:"💃",ab:[{curse:[12,5],drain:[9,50],bolt:[5,.09],rain:[10,6],sil:[16,2.5],rage:1}]}]}
   if(rn===37){o.n="사단 니골라당";o.ref="요한계시록 2장 · 17장";o.tx="니골라당의 행위를 미워하노라! 열 뿔과 여덟째 왕이 뒤를 이어요";o.b="nico";o.el=1;o.bb=1;o.g=[["pharisee",12],["skull",10],["remB",12],["scorpion",8]];o.ph=[{b:["nico"]},{b:["tenhorn"],x:1.4,tT:52,sub:["horn",6,.07],nm:"열 뿔",em:"🐏"},{b:["king"],x:2.1,tT:66,nm:"여덟째 왕",em:"👹"}]}
-  if(rn===40){o.n="큰 성 바벨론";o.ref="요한계시록 18장";o.tx="무너졌도다 무너졌도다 큰 성 바벨론이여! 사치와 음행의 성이 마지막으로 버텨요";o.b="gbab";o.bb=1;o.ph=null}
+  if(rn===40){o.n="큰 성 바벨론";o.ref="요한계시록 18장";o.tx="무너졌도다 무너졌도다 큰 성 바벨론이여! 사치와 음행의 성이 마지막으로 버텨요";o.b="gbab";o.bb=1;o.ph=[{b:["gbab"]},{b:["eden"],x:1.7,tT:54,nm:"에덴의 선악나무",em:"🌳",ab:[{arm:.25,curse:[10,5],sil:[13,2.5],drain:[9,45],swarm:[14,5],bolt:[6,.07],heal:[10,.04],rage:1}]}]}
   if(rn===NR){o.n="에덴동산의 흔적";o.ref="창세기 3장 · 요한계시록 12장 · 20장";o.tx="옛 뱀의 흔적에서 시작된 죄의 뿌리… 마지막 싸움이에요";o.b="eden";o.el=1;o.ph=[{b:["eden"]},{b:["fangel","fangel","fangel","fangel"],hs:.32,tT:40,nm:"범죄한 네 천사",em:"😈",x:1.2,ab:[{bolt:[6,.07]},{swarm:[17,3],bolt:[9,.05]},{rain:[9,5],bolt:[10,.05]},{sil:[17,2.5],bolt:[11,.05]}]},{b:["oldsnake"],x:1.3,tT:46,nm:"옛 뱀",em:"🐍"},{b:["dragon"],x:1.5,tT:50,nm:"붉은 용",em:"🐉"},{b:["sinroot"],x:1.8,tT:56,nm:"죄의 근원",em:"👿"}]}
   if(rn>10&&o.b&&!o.el)o.tb=1;
   var tot=0;o.g.forEach(function(x){tot+=x[1]});o.g.push([rn<=12?"archer":rn%2?"magi":"archer",Math.max(2,tot*.09)]);if(rn>12)o.g.push([rn%2?"archer":"magi",Math.max(2,tot*.06)]);
@@ -2978,7 +2983,7 @@ function killX(g,m,s){var U=g.uq;
   if(s.f4.freeze&&m.frz>0){nearN(g,m.x,m.y,3,120,m).forEach(function(q){hurt(g,q,s.dmg*1.5,true);q.frz=Math.max(q.frz,.8);q.stun=Math.max(q.stun,.8);vfx(g,{k:"hail",x:q.x,y:q.y,t:.35})})}
   if(fM(g,"joy",2)&&Math.random()<.12){aoeD(g,m.x,m.y,90,s.dmg*4*fM(g,"joy",2),m);vfx(g,{k:"firework",x:m.x,y:m.y,t:.7,r:70});if(!g.surv&&!bossNoGold(g))g.gold+=Math.ceil(2*Math.min(g.round,NR)*s.goldM);ev(g,"coin")}
   frKill(g,m,s);
-  if(g.disc==="andrew"&&Math.random()<.1){g.mons.forEach(function(q){if(q.hp>0&&Math.hypot(q.x-m.x,q.y-m.y)<70){q.slT=Math.max(q.slT,2);q.slv=Math.max(q.slv,.4)}});vfx(g,{k:"net",x:m.x,y:m.y,t:.6,r:70})}
+  if(g.disc==="andrew"&&Math.random()<.15){g.mons.forEach(function(q){if(q.hp>0&&Math.hypot(q.x-m.x,q.y-m.y)<70){q.slT=Math.max(q.slT,2);q.slv=Math.max(q.slv,.4)}});vfx(g,{k:"net",x:m.x,y:m.y,t:.6,r:70})}
   if(g.disc==="matthew"&&Math.random()<.02){aoeD(g,m.x,m.y,80,s.dmg*2,m);if(!g.surv&&!bossNoGold(g))g.gold+=5*Math.min(g.round,NR);part(g,m.x,m.y,18,"#ffd23f",220,.5,3);vfx(g,{k:"firework",x:m.x,y:m.y,t:.6,r:80,gold:1});ev(g,"coin")}
   if(U.loaves){g.lfN=(g.lfN||0)+1;if(g.lfN%(s.awk&&s.awk.loaves?3:5)===0)g.hp=Math.min(g.maxhp,g.hp+g.maxhp*.01)}
   if(U.jonah){g.jk=(g.jk||0)+1;if(g.jk%(s.awk&&s.awk.jonah?15:25)===0){g.hp=Math.min(g.maxhp,g.hp+g.maxhp*(s.awk&&s.awk.jonah?.1:.06));g.inv=Math.max(g.inv||0,s.awk&&s.awk.jonah?1.2:.8);ring(g,CX,CY,110,"#9fe8ff",6,.5);vfx(g,{k:"dove",x:CX,y:CY-40,t:.8,ic:"🐋"})}}}
@@ -3260,7 +3265,7 @@ function postX(g,p,tg,s,c,d){var killed=tg.hp<=0&&!tg.kx2,i;if(killed)tg.kx2=1;
   if(killed&&s.f4.sword&&!p.fol&&Math.random()<.25){var L=Math.hypot(p.vx,p.vy)||1,ux=p.vx/L,uy=p.vy/L;lineHit(g,tg.x,tg.y,ux,uy,170,16,s.dmg*1.2);vfx(g,{k:"swordline",x:tg.x,y:tg.y,vx:ux,vy:uy,t:.3,L:170})}
   if(killed&&c&&g.disc==="peter"){aoeD(g,tg.x,tg.y,60,s.dmg*.8,tg);part(g,tg.x,tg.y,12,"#c8b89a",180,.4,3);ring(g,tg.x,tg.y,60,"#d8c8a8",4,.3)}
   if(killed&&p.fol&&s.f4.summon){nearN(g,tg.x,tg.y,2,160,tg).forEach(function(q){shoot(g,tg.x,tg.y,q,s.fdm*s.sd*.5,{fol:1,hm:1})});part(g,tg.x,tg.y,8,"#ffffff",120,.4,2)}
-  if(g.disc==="james"&&!p.fol){g.jmN=(g.jmN||0)+1;if(g.jmN%10===0){aoeD(g,tg.x,tg.y,70,s.dmg*1.5);vfx(g,{k:"bolt",x:tg.x,y:tg.y,t:.3,c:"205,180,255"});ev(g,"chain")}}
+  if(g.disc==="james"&&!p.fol){g.jmN=(g.jmN||0)+1;if(g.jmN%8===0){aoeD(g,tg.x,tg.y,70,s.dmg*1.5);vfx(g,{k:"bolt",x:tg.x,y:tg.y,t:.3,c:"205,180,255"});ev(g,"chain")}}
   if(g.lg.glacier&&tg.frz>0&&!p.fol&&!p.mir){p.mir=1;p.bl=(p.bl||0)+1}
   if(g.items.indexOf("coat")>=0&&!p.fol){var r=Math.random();if(r<.25){tg.burn=Math.max(tg.burn||0,s.dmg*.15);tg.burnT=Math.max(tg.burnT,2)}else if(r<.5){tg.slT=Math.max(tg.slT,1.5);tg.slv=Math.max(tg.slv,.25)}else if(r<.75){tg.poiT=Math.max(tg.poiT,2);tg.poiD=Math.max(tg.poiD||0,s.dmg*.15)}else{var cq=nearN(g,tg.x,tg.y,1,110,tg)[0];if(cq){hurt(g,cq,d*.4,true);if(g.vfx&&g.arcs.length<12)g.arcs.push({pts:[[tg.x,tg.y],[cq.x,cq.y]],t:.2,m:.2})}}}
   if(g.seedN>0&&!p.fol){g.seedN--;aoeD(g,tg.x,tg.y,55,s.dmg*1.2);vfx(g,{k:"boom",x:tg.x,y:tg.y,t:.4,r:55});part(g,tg.x,tg.y,10,"#9be05a",160,.4,3)}
@@ -3451,7 +3456,7 @@ function step(g,dt){
     if(!g.surv&&!g.rd.b&&g.round>=12&&g.round<NR&&g.pfN>20){var pfA=g.pfS/g.pfN;g.pfL=pfA;var dd0=g.dd||1;g.dd=Math.max(1,Math.min(ddMx(g),(g.dd||1)*Math.max(ddDn(g),Math.min(ddUp(g),Math.pow(pfT(g)/Math.max(.05,pfA),.6)))));if(g.round>=15&&g.mode!=="easy"){if(g.lowR)g.dd=Math.max(1,dd0*.7);else if(g.hpMn<.8)g.dd=Math.min(g.dd,dd0)}}
     if(g.rd.b&&!g.rd.el&&!g.surv){roulRoll(g);g.q.push("roul")}
     if(g.round===10&&!g.horse)g.q.push("horse");
-    if(g.round===20&&!g.nt){g.nt=1;g.disc=DISC[Math.floor(Math.random()*DISC.length)].id;refresh(g);ring(g,CX,CY,220,"#ffd23f",8,.9);part(g,CX,CY,120,"#fff3a0",360,1.1,5);ev(g,"legend");g.q.push("nt")}
+    if(g.round===20&&!g.nt){g.nt=1;g.disc=null;refresh(g);ring(g,CX,CY,220,"#ffd23f",8,.9);part(g,CX,CY,120,"#fff3a0",360,1.1,5);ev(g,"legend");g.q.push("nt")}
     if(g.s&&g.s.coinInt){var itr=Math.min(1000,Math.floor(g.gold*.05));if(itr>0){g.gold+=itr;if(g.vfx)g.fx.push({x:CX,y:CY-80,t:2,txt:"🪙 다섯 달란트 이자 +"+itr,c:"#ffe066",big:1})}}
     if(g.round===30){g.rew=rewFin(g);if(g.rew){if(g.mode==="true")g.rew.ttl="에덴의 선악나무 흔적을 이겼어요!";g.q.push("rew")}}
     if(g.round===33&&g.mode==="true"&&!g.surv){g.rew=rewFin(g);if(g.rew){g.rew.ttl="일곱 금 촛대장막과 떨어진 해, 달, 별을 이겼어요!";g.q.push("rew")}}
@@ -3486,7 +3491,8 @@ function endAck(g){if(g.state!=="ending")return;next(g)}
 function prepAck(g){if(g.state!=="prep")return;g.prepDone=1;startSurv(g)}
 function cont(g){if(g.toSurv&&g.mode==="easy"){g.toSurv=false;g.easyClr=1;g.state="over";g.flash=.5;ev(g,"legend");return}if(g.toSurv){if(!g.prepDone){g.state="prep";return}startSurv(g)}else if(g.surv){g.state="play";g.paused=false}else startRound(g)}
 function next(g){if(g.q.length){g.state=g.q.shift();return}if(g.toSurv&&g.mode==="easy"){cont(g);return}g.choices=pick(g);g.rrN=(g.round>=20?1+(fM(g,"kindness",1)?2:0):0)+(fM(g,"kindness",4)?1:0);if(g.choices.length)g.state="pick";else cont(g)}
-function ntAck(g){if(g.state!=="nt")return;next(g)}
+function ntAck(g){if(g.state!=="nt"||!g.disc)return;next(g)}
+function ntPick(g,id){if(g.state!=="nt"||g.disc)return;if(id==="rand"){if(Math.random()<JESUS_P)id="jesus";else{var L=DISC.filter(function(d){return !d.jesus});id=L[Math.floor(Math.random()*L.length)].id}g.discRand=1}g.disc=id;g.ver++;refresh(g);ring(g,CX,CY,220,"#ffd23f",8,.9);part(g,CX,CY,120,"#fff3a0",360,1.1,5)}
 function horseChoose(g,key){if(g.state!=="horse")return;var h=key;if(key==="rand"){var r=Math.random();h=r<.3?"red":r<.6?"black":r<.9?"pale":"white"}
   g.horse=h;g.hres=h;g.sk=0;g.uk=Math.max(g.uk,10);refresh(g);g.state="horseRes";ring(g,CX,CY,200,"#"+(h==="white"?"fff7c8":"ffd23f"),8,.8);part(g,CX,CY,80,h==="white"?"#fff7c8":"#ffd23f",320,1,4);ev(g,h==="white"?"legend":"unique")}
 function horseAck(g){if(g.state!=="horseRes")return;next(g)}
@@ -3533,7 +3539,7 @@ function apply(g,c){if(c.lg)g.lg[c.id]=1;else if(c.uq)g.uq[c.id]=1;else{var lv0=
 var BTTL={sword:["날 선","검사"],shield:["굳건한","수호자"],sling:["돌을 던지는","돌팔매꾼"],fire:["불타는","불의 사자"],sea:["물결치는","바다의 지배자"],horn:["울려 퍼지는","나팔수"],manna:["배부른","만나 지기"],samson:["힘센","장사"],daniel:["기도하는","파수꾼"],wisdom:["지혜로운","말씀의 학자"],chariot:["질주하는","병거 기수"],pierce:["꿰뚫는","창잡이"],bounce:["튕기는","메아리꾼"],chain:["번개 치는","우레의 사자"],freeze:["얼어붙은","서리 수호자"],star:["별빛의","예언자"],summon:["천사를 부르는","천사장"],legion:["용사를 이끄는","천군 장수"],melee:["내려치는","철퇴 전사"],blood:["언약의","어린양의 제사장"],mp:["샘솟는","생수의 선지자"],coin:["부유한","청지기"],wrath:["진노하는","심판관"],help:["도우시는","빛의 전령"],mind:["권세 있는","영을 다스리는 자"],cup:["넘치는","잔을 든 제사장"],dodge:["재빠른","바람의 질주자"],spell:["권능의","말 탄 기수"]};
 function bTitle(g){var L=g.lv||{},ks=UP.map(function(u){return u.id}).filter(function(k){return L[k]>0&&BTTL[k]});ks.sort(function(a,b){return L[b]-L[a]});if(!ks.length)return"새내기 파수꾼";var t=(ks[1]?BTTL[ks[1]][0]+" ":"")+BTTL[ks[0]][1];if(Object.keys(g.lg||{}).length>=3)t="전설의 "+t;return t+(g.horse&&HORSE[g.horse]?" "+HORSE[g.horse].ic:"")}
 function fourChk(g){if(Object.keys(g.lg).length>=4&&!g.fourSeen){g.fourSeen=1;g.fourT=4.5;vfx(g,{k:"sun",x:CX,y:CY,t:2.2,c:"255,230,160",big:1});ring(g,CX,CY,300,"#fff3a0",12,1.1);part(g,CX,CY,140,"#fff3a0",380,1.2,5);ev(g,"legend")}}
-return{mkList:mkList,mkTrig:mkTrig,SCENES:SCENES,scTxt:scTxt,sceneChoose:sceneChoose,scRoll:scRoll,FUP:FUP,FLM:FLM,SETS:SETS,AWK:AWK,awkOn:awkOn,setN:setN,bTitle:bTitle,AFX:AFX,roulRoll:roulRoll,LUP:LUP,LUN:LUN,lupCost:lupCost,lupTry:lupTry,giveItem:giveItem,pickItem:pickItem,TP:function(v){if(v!==undefined)TPB=v;return TPB},EZ:EZ,DX:DX,PREP:PREP,PTAB:PTAB,PRIM:PRIM,elCombo:elCombo,prepBuy:prepBuy,prepAck:prepAck,endAck:endAck,truthStart:truthStart,W:W,H:H,CX:CX,CY:CY,CR:CR,NR:NR,RD:RD,SURV:SURV,UP:UP,UQ:UQ,IT:IT,REL:REL,LG:LG,UPG:UPG,MT:MT,FRUIT:FRUIT,setFruits:setFruits,reroll:reroll,SYN:SYN,ROUL:ROUL,roulAck:roulAck,gacha:gacha,gachaClose:gachaClose,gachaCost:gachaCost,gachaLeft:gachaLeft,GACHA:GACHA,gachaP:gachaP,lupP:lupP,luck:luck,TREES:TREES,stats:stats,DISC:DISC,ntAck:ntAck,horseChoose:horseChoose,horseAck:horseAck,rewPick:rewPick,elemPick:elemPick,HORSE:HORSE,HEAL:HEAL,S:getS,newRun:newRun,startRound:startRound,step:step,tap:tap,skill:skill,ultimate:ultimate,eskill:eskill,eskInfo:eskInfo,ESK:ESK,esLv:esLv,BU:BU,apply:apply,altarOpen:altarOpen,altarUsed:altarUsed,altarLock:altarLock,altarCan:altarCan,altarSwap:altarSwap,buy:buy,upCost:upCost,byId:byId,cardTxt:cardTxt,treeSums:treeSums,mastery:mastery};
+return{ntPick:ntPick,mkList:mkList,mkTrig:mkTrig,SCENES:SCENES,scTxt:scTxt,sceneChoose:sceneChoose,scRoll:scRoll,FUP:FUP,FLM:FLM,SETS:SETS,AWK:AWK,awkOn:awkOn,setN:setN,bTitle:bTitle,AFX:AFX,roulRoll:roulRoll,LUP:LUP,LUN:LUN,lupCost:lupCost,lupTry:lupTry,giveItem:giveItem,pickItem:pickItem,TP:function(v){if(v!==undefined)TPB=v;return TPB},EZ:EZ,DX:DX,PREP:PREP,PTAB:PTAB,PRIM:PRIM,elCombo:elCombo,prepBuy:prepBuy,prepAck:prepAck,endAck:endAck,truthStart:truthStart,W:W,H:H,CX:CX,CY:CY,CR:CR,NR:NR,RD:RD,SURV:SURV,UP:UP,UQ:UQ,IT:IT,REL:REL,LG:LG,UPG:UPG,MT:MT,FRUIT:FRUIT,setFruits:setFruits,reroll:reroll,SYN:SYN,ROUL:ROUL,roulAck:roulAck,gacha:gacha,gachaClose:gachaClose,gachaCost:gachaCost,gachaLeft:gachaLeft,GACHA:GACHA,gachaP:gachaP,lupP:lupP,luck:luck,TREES:TREES,stats:stats,DISC:DISC,ntAck:ntAck,horseChoose:horseChoose,horseAck:horseAck,rewPick:rewPick,elemPick:elemPick,HORSE:HORSE,HEAL:HEAL,S:getS,newRun:newRun,startRound:startRound,step:step,tap:tap,skill:skill,ultimate:ultimate,eskill:eskill,eskInfo:eskInfo,ESK:ESK,esLv:esLv,BU:BU,apply:apply,altarOpen:altarOpen,altarUsed:altarUsed,altarLock:altarLock,altarCan:altarCan,altarSwap:altarSwap,buy:buy,upCost:upCost,byId:byId,cardTxt:cardTxt,treeSums:treeSums,mastery:mastery};
 })();
 
 var SND=(function(){
@@ -3924,7 +3930,7 @@ function infoHtml(){
   h+='<div class="ir">💧 <b>마나</b> <small>'+Math.floor(g.mp)+'/'+s.mpMax+' · 회복 '+s.mpReg.toFixed(1)+'/초</small></div>';
   if(g.elem){var e=EL[g.elem];h+='<div class="ih" style="color:rgb('+e.col+');border-left:4px solid rgb('+e.col+');padding-left:6px">🌿 깨달음 · '+e.ic+' '+e.n+' 속성'+(s.evo?' ✨진화':'')+'</div><div class="ir"><small>'+e.d+(s.evo?'<br>✨ 유니크 7개 달성! '+EVD[g.elem]:'<br>🔒 유니크 7개를 모으면 속성이 진화해요 ('+Object.keys(g.uq).length+'/7)')+'</small></div>'}
   if(g.cert)h+='<div class="ih">🎖️ 에픽 · 144,000의 자격</div><div class="ir"><small>공격력 +20% · 성 체력 +150 · 최대 마나 +30 · 마나 회복 +1/초 (요한계시록 7·14장)</small></div>';
-  if(g.nt){var dd=GL.byId(GL.DISC,g.disc);h+='<div class="ih">📖 에픽 · 신약 성경</div><div class="ir">'+dd.ic+' <b>'+dd.n+'</b><br><small>'+dd.d+'</small></div>'}
+  if(g.nt&&g.disc){var dd=GL.byId(GL.DISC,g.disc);h+='<div class="ih">📖 에픽 · 신약 성경</div><div class="ir">'+dd.ic+' <b>'+dd.n+'</b><br><small>'+dd.d+'</small></div>'}
   h+='<div class="ih">🎁 성경 아이템 ('+g.items.length+'/'+GL.IT.length+')</div>';
   if(g.rel&&g.rel.length){h+='<div class="ih">🏺 유물 ('+g.rel.length+'/12)</div>'+g.rel.map(function(id){var it=GL.byId(GL.REL,id);return '<div class="ir">'+it.ic+' <b>'+it.n+'</b><br><small>'+it.d+' · '+it.ref+'</small></div>'}).join("")}
   h+=g.items.length?g.items.map(function(id){var it=GL.byId(GL.IT,id);return '<div class="ir">'+it.ic+' <b>'+it.n+'</b><br><small>'+(it.d||itText(it.f))+' · '+it.ref+'</small>'+setTag(id)+'</div>'}).join(""):'<div class="ir"><small>아직 없어요. 몬스터가 아주 가끔 떨어뜨려요!</small></div>';h+=setsHtml();var cn=(g.s&&g.s.cres)||0;if(cn>0)h+='<div class="ir"><b>💎 치명 공명 '+cn+'개</b><br><small>치명타 관련 아이템·제자·삼손·심판이 서로 힘을 더해요<br>'+[[2,'치명타 +3%'],[3,'치명 피해 +0.25배'],[4,'공격력 +10%'],[5,'치명타 +4% · 치명 피해 +0.35배']].map(function(r){return (cn>=r[0]?'✅ ':'🔒 ')+r[0]+'개: '+r[1]}).join('<br>')+'<br>대상: 기드온의 횃불 · 판결 흉패 · 예후의 활 · 요한계시록 실상 · 선한 목자의 지팡이 · 등경 위의 등불 · 요셉의 채색옷 · 베드로/야고보/도마 · 삼손 카드 · 심판 전설</small></div>';
@@ -3960,7 +3966,9 @@ function prepHtml(){var P=g.prep||{},tb=g.ptab||"w",T=GL.PTAB;
     h+='<div class="prw"><span class="pi">'+x.ic+'</span><span class="pt2"><b>'+x.n+'</b> <small>'+x.d+'</small><br><small>'+n+'/'+x.max+' · 1회 💰'+x.per.toLocaleString()+'</small><div class="bar"><i style="width:'+Math.round(n/x.max*100)+'%"></i></div></span><span class="pb2">'+(full?'<button class="mx" disabled>MAX</button>':'<button onclick="gPrep(\''+x.id+'\',1)">+1</button><button onclick="gPrep(\''+x.id+'\',10)">+10</button><button class="mx" onclick="gPrep(\''+x.id+'\',999)">'+(can>0?'최대 '+can:'—')+'</button>')+'</span></div>'});
   h+='<button class="ye" style="margin-top:10px;width:100%" onclick="gPrepGo()">✝️ 전도 시작!</button>';return h}
 function ttlHtml(){return '<div class="gbox" style="margin-bottom:8px"><small>이번 판의 칭호</small><br><b style="color:#ffd27a;font-size:16px">「'+GL.bTitle(g)+'」</b></div>'}
-function ntHtml(){var d=GL.byId(GL.DISC,g.disc);return '<div style="font-size:46px">📖</div><b style="font-size:20px;color:#ffe066">🌟 에픽 · 신약 성경 획득!</b><div style="font-size:12px;margin:6px 0 10px;line-height:1.5">구약이 끝나고 새 언약이 열렸어요<br>공격력 +15% · 성 체력 +50 · 회복 +2/초</div><div class="gbox" style="margin:0 0 10px;font-size:12px;line-height:1.5">🔄 <b>능력 카드 다시 뽑기</b><br>이제부터 라운드마다 능력 카드를 <b>1번</b> 다시 뽑을 수 있어요<br><small>(믿음의 열매를 장착하면 +1번)</small></div><div class="ir" style="text-align:center;font-size:13px"><div style="font-size:40px">'+d.ic+'</div><b>열두 제자 · '+d.n+'</b><br><small>'+d.d+'</small><br><small>'+d.ref+'</small></div><button class="ye" style="margin-top:12px" onclick="gNt()">말씀 카드 고르기</button>'}
+function ntHtml(){var hd='<div style="font-size:46px">📖</div><b style="font-size:20px;color:#ffe066">🌟 에픽 · 신약 성경 획득!</b><div style="font-size:12px;margin:6px 0 10px;line-height:1.5">구약이 끝나고 새 언약이 열렸어요<br>공격력 +15% · 성 체력 +50 · 회복 +2/초</div><div class="gbox" style="margin:0 0 10px;font-size:12px;line-height:1.5">🔄 <b>능력 카드 다시 뽑기</b><br>이제부터 라운드마다 능력 카드를 <b>1번</b> 다시 뽑을 수 있어요<br><small>(믿음의 열매를 장착하면 +1번)</small></div>';
+if(!g.disc){var h=hd+'<div style="font-size:13px;margin-bottom:6px"><b>함께할 제자를 고르세요</b></div><div style="max-height:260px;overflow-y:auto;text-align:left">';GL.DISC.forEach(function(d){if(d.jesus)return;h+='<div class="gbox" style="margin:0 0 6px;font-size:11px;line-height:1.4;cursor:pointer" onclick="gNtPick(\''+d.id+'\')">'+d.ic+' <b>'+d.n+'</b><br><small>'+d.d+'</small></div>'});return h+'</div><button class="ye" style="margin-top:10px" onclick="gNtPick(\'rand\')">🎲 랜덤 선택 <small>(✝️ 예수님이 나올 수도 있어요!)</small></button>'}
+var d=GL.byId(GL.DISC,g.disc);return hd+'<div class="ir" style="text-align:center;font-size:13px"><div style="font-size:40px">'+d.ic+'</div><b>'+(d.jesus?'✨ 예수님이 함께하세요!':'열두 제자 · '+d.n)+'</b>'+(d.jesus?'<br><b>'+d.n+'</b>':'')+'<br><small>'+d.d+'</small><br><small>'+d.ref+'</small></div><button class="ye" style="margin-top:12px" onclick="gNt()">말씀 카드 고르기</button>'}
 function horseHtml(){var h='<div>'+hz2('red',26)+hz2('black',26)+hz2('pale',26)+hz2('white',26)+'</div><div style="font-size:13px;color:#ffd6a0;font-weight:700">🎁 배도한 왕을 이긴 보상!</div><b style="font-size:19px;color:#ffe066">말 카드를 고르세요</b><div style="font-size:11px;opacity:.9;margin:4px 0 8px;line-height:1.5">요한계시록 6장 · 고른 말이 나의 스킬이 돼요 (마나를 써요)</div>';
   ["red","black","pale"].forEach(function(k){var H=GL.HORSE[k];h+='<button class="uc ca hc hc-'+k+'" onclick="gHorse(\''+k+'\')">'+hz2(k,40)+'<span><b>'+H.n+'</b><br><small>기본 · '+H.bn+'<br>궁극 · '+H.un+'</small><br><small class="pt">'+({red:'주변 적을 불로 베고 불태워요 · 공격형',black:'큰 마나 방어막 + 적을 밀어내는 파동 · 방어형',pale:'독에 걸린 적은 약해져요 · 수비형'})[k]+'</small></span></button>'});
   h+='<button class="uc lg ca" onclick="gHorse(\'rand\')"><span style="font-size:30px">🎲</span><span><b>주의 뜻대로</b><br><small>붉은·검은·청황색 말 각 30% · '+hz2('white',16)+' 흰 말 10%!</small></span></button>';
@@ -6298,7 +6306,7 @@ function draw(){
     if(g.dyT>0)txt("💀 죽도록 충성하라 "+Math.ceil(g.dyT)+"초 · 회복 "+Math.max(0,Math.round(g.hp-1))+"/"+Math.round(g.dyDebt),CX,CY-100,"bold 13px "+SF,"#cfe6ff");if(g.ultT>0)txt("⚪ 흰 말의 질주 "+Math.ceil(g.ultT)+"초",CX,CY-82,"bold 14px "+SF,"#fff7c8");
     if(g.esb){var ebY=CY-96;for(var ebk2 in g.esb){if(g.esb[ebk2]>g.t&&EBL[ebk2]){txt(EBL[ebk2]+" "+Math.ceil(g.esb[ebk2]-g.t)+"초",CX,ebY,"bold 12px "+SF,"#fff7c8");ebY-=14}}}
     if(g.hb>0)txt("🛡 마나 방어막 "+Math.ceil(g.hbT)+"초",CX,CY-68,"bold 11px "+SF,"#c9d0ff");
-    if(g.nt){sp(GL.byId(GL.DISC,g.disc).ic,17,W-100,H-14)}
+    if(g.nt&&g.disc){sp(GL.byId(GL.DISC,g.disc).ic,17,W-100,H-14)}
     g.items.forEach(function(id,k2){sp(GL.byId(GL.IT,id).ic,16,14+k2*19,H-14)});
     if(g.rel&&g.rel.length){var rx0=14+g.items.length*19+(g.items.length?8:0);g.rel.forEach(function(id,k2){var rr3=GL.byId(GL.REL,id);if(!rr3)return;var rxx=rx0+k2*19;if(rxx>W-90)return;gx.globalCompositeOperation=LM;gl(rxx,H-14,13,"255,210,90",.45+.15*Math.sin(t*3+k2));gx.globalCompositeOperation="source-over";sp(rr3.ic,15,rxx,H-14)})}
     if(g.hvS)txt("🌱 +"+(g.hvS*.025).toFixed(1)+"%",10,H-76,"bold 10px "+SF,"#ffe9a8","left");
@@ -6409,6 +6417,7 @@ function runSave(){var o={},k,v;for(k in g){if(RSKIP[k]||k.charAt(0)==="_")conti
 window.gContinue=function(){var r=S.run;if(!r||!r.svR)return;SND.unlock();g=GL.newRun();g.qual=QL;for(var k in r){if(k==="hpF"||k==="svR"||k==="d")continue;g[k]=r[k]}g.round=r.svR-1;g.state="menu";g.view=null;g.ver=(g.ver||0)+1;g.s=GL.S(g);g.maxhp=g.s.maxhp;g.hp=Math.max(1,Math.min(g.maxhp,g.maxhp*(r.hpF||1)));g.mp=Math.min(g.mp||0,g.s.mpMax);GL.startRound(g);g._svR=g.round;okey="";overlay()};
 window.gPtab=function(k){g.ptab=k;SND.play("tap");okey="";overlay()};
 window.gPrepGo=function(){SND.unlock();GL.prepAck(g);okey="";overlay()};
+window.gNtPick=function(id){SND.unlock();GL.ntPick(g,id);okey="";overlay()};
 window.gNt=function(){SND.unlock();GL.ntAck(g);okey="";overlay()};
 window.gInfo=function(){panel("info")};
 window.gOpt=function(){g.mcf=0;panelO()};
