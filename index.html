@@ -2083,7 +2083,10 @@ function lzStep(g,s,dt){
     /* 노릴 적: 성에 가장 가까운 적 · 거리가 비슷하면 지금 빔과 가까운 쪽 · 훨씬 가까운 적이 생기면 그쪽으로 돌려요 */
     var pick=T[0],d0=lzD(T[0]);
     if(b.a!==null){var ba=1e9;for(i=0;i<T.length&&i<6;i++){if(lzD(T[i])>d0+34)break;var ad=Math.abs(lzAD(Math.atan2(T[i].y-CY,T[i].x-CX),b.a));if(ad<ba){ba=ad;pick=T[i]}}}
-    var cur=b.tg&&b.tg.hp>0?b.tg:null;if(!cur||(pick!==cur&&lzD(cur)>lzD(pick)+38)){b.tg=pick;b.fm=0}
+    var cur=b.tg&&b.tg.hp>0?b.tg:null;
+    /* 타겟이 사라지면: 빔이 향하던 직선 위의 가장 가까운 적이 곧바로 새 타겟 (성에서 가장 가까운 적이 아니어도 돼요) */
+    if(!cur&&b.a!==null&&!(T[0].tauntT>0)){var lbx=Math.cos(b.a),lby=Math.sin(b.a),lbd=1e9,lbq=null;for(i=0;i<T.length;i++){var lq=T[i],lrx=lq.x-CX,lry=lq.y-CY,lu=lrx*lbx+lry*lby;if(lu<0)continue;if(Math.abs(lrx*lby-lry*lbx)<18+lq.sz*.4&&lu<lbd){lbd=lu;lbq=lq}}if(lbq)pick=lbq}
+    if(!cur||(pick!==cur&&lzD(cur)>lzD(pick)+38)){b.tg=pick;b.fm=0}
     var ta=Math.atan2(b.tg.y-CY,b.tg.x-CX),hm0=Math.min(1,s.hm||0);
     if(b.a===null)b.a=ta;
     if(b.ph===0){b.ph=1;b.t=0;b.w=0}
@@ -2096,16 +2099,16 @@ function lzStep(g,s,dt){
       b.tm=Math.min(3,b.tm+dt);b.fm=Math.min(2,b.fm+dt)}}
   if(b.a===null||b.ph===0){b.pts=null;b.hits=null;b.br=null;b.hp=null;b.cx=null;return}
   /* 빔 줄기: 유도가 있으면 노린 적 쪽으로 휘어요 */
-  var hm=Math.min(1,s.hm||0),f0=CR*(NB>1?1.15:.55),x=CX+Math.cos(b.a)*f0,y=CY+Math.sin(b.a)*f0,pts=[[x,y]],ang=b.a,ln=0,past=!b.tg||hm<=.05,thru=lzThru(g);b.thru=thru;
+  var hm=Math.min(1,s.hm||0),f0=CR*(NB>1?1.15:.55),x=CX+Math.cos(b.a)*f0,y=CY+Math.sin(b.a)*f0,pts=[[x,y]],ang=b.a,ln=0,past=!b.tg||hm<=.05,nh=past,tIx=-1,thru=lzThru(g);b.thru=thru;
   if(b.tg)b.lL=Math.max(20,Math.hypot(b.tg.x-CX,b.tg.y-CY)-f0+b.tg.sz*.25);
-  var Lm=thru?700:(hm>.05&&b.tg?900:(b.lL||160));
+  var Lm=thru?700:900;
   while(ln<Lm){
-    if(!past){var hx=b.tg.x-x,hy=b.tg.y-y,hd=Math.hypot(hx,hy);if(hd<Math.max(16,b.tg.sz*.3)){past=true;if(!thru)break}else{var mx=hm*.16;ang+=Math.max(-mx,Math.min(mx,lzAD(Math.atan2(hy,hx),ang)))}}
-    var st2=Math.min(16,Lm-ln);x+=Math.cos(ang)*st2;y+=Math.sin(ang)*st2;ln+=st2;pts.push([x,y]);if(x<-30||x>W+30||y<-30||y>H+30)break}
+    if(!past){var hx=b.tg.x-x,hy=b.tg.y-y,hd=Math.hypot(hx,hy);if(hd<Math.max(16,b.tg.sz*.3)){past=true;tIx=pts.length-1}else{var mx=hm*.16;ang+=Math.max(-mx,Math.min(mx,lzAD(Math.atan2(hy,hx),ang)))}}
+    var st2=Math.min(16,Lm-ln);x+=Math.cos(ang)*st2;y+=Math.sin(ang)*st2;ln+=st2;pts.push([x,y]);if(nh&&tIx<0&&b.tg&&ln>=(b.lL||160))tIx=pts.length-1;if(x<-30||x>W+30||y<-30||y>H+30)break}
   var hw=(tr>=2?32:tr>=1?9:6)*(1+Math.min(.5,.07*(NB-1)))*(1+.6*((s.psz||1)-1))*(g.lg.feast?1.3:1)*(1+(b.gw||0));b.hw=Math.min(tr>=2?64:30,hw);b.vw=Math.min(tr>=2?96:44,(tr>=2?70:tr>=1?20:13)*(1+Math.min(.5,.07*(NB-1)))*(1+.25*((s.psz||1)-1))*(g.lg.feast?1.12:1)*(1+(b.gw||0)*.5));
   /* 줄기에 걸린 적 (가까운 순) */
   var hits=[];
-  if(b.ph>=2&&T.length){for(i=0;i<T.length;i++){var m=T[i],md=1e9,ix=0;for(var j=1;j<pts.length;j++){var ex=m.x-pts[j][0],ey=m.y-pts[j][1],dd=ex*ex+ey*ey;if(dd<md){md=dd;ix=j}}if(Math.sqrt(md)<b.hw+m.sz*.36)hits.push([ix,m])}
+  if(b.ph>=2&&T.length){for(i=0;i<T.length;i++){var m=T[i],md=1e9,ix=0;for(var j=1;j<pts.length;j++){var ex=m.x-pts[j][0],ey=m.y-pts[j][1],dd=ex*ex+ey*ey;if(dd<md){md=dd;ix=j}}if(!thru&&tIx>=0&&ix>tIx+1)continue;if(Math.sqrt(md)<b.hw+m.sz*.36)hits.push([ix,m])}
     hits.sort(function(p,q){return p[0]-q[0]});if(hits.length>48)hits.length=48}
   b.pts=pts;b.hits=hits;
   var gT=g.lg.dpierce?Math.min(.4,.05*hits.length):0;b.gw=(b.gw||0)+(gT-(b.gw||0))*Math.min(1,dt*4);
