@@ -4163,7 +4163,7 @@ function pickHtml(){
   else if(g.round>=20&&!g.surv)h+='<div style="font-size:11px;opacity:.8;margin-top:2px">🔄 다시 뽑기를 이미 사용했어요</div>';
   return h+((g.gu.castle||0)<2?'<div style="font-size:11px;opacity:.9;margin-top:6px">🔒 '+((g.gu.castle||0)<1?'장인(4단계) 카드는 성 1단계 업그레이드 후 · ':'')+'전설 능력은 성 2단계 업그레이드 후 나와요 (💰 상점)</div>':'')+'<div style="font-size:12px;margin-top:6px">❤️ '+Math.ceil(g.hp)+'/'+g.maxhp+' · 💰 '+Math.floor(g.gold)+'</div><button class="uc" style="justify-content:center;margin-top:6px" onclick="gShop()">💰 성 업그레이드 · 달란트 강화</button>'+itemsRow();
 }
-function figBox(){var tl='<b>🕊️ 믿음의 선진 부르기</b> <small>성경 인물의 영혼이 성에 깃들어요</small>';
+function figBox(){var tl='<b>🕊️ 믿음의 선진 부르기</b>';
   if(g.mode!=="true")return '<div class="gbox" style="opacity:.7">'+tl+'<div style="font-size:12px;margin-top:6px">🔒 트루 모드에서만 부를 수 있어요</div></div>';
   if(!GL.figOpen(g))return '<div class="gbox" style="opacity:.75">'+tl+'<div style="font-size:12px;margin-top:6px">🔒 전설을 1개 이상 얻으면 부를 수 있어요</div></div>';
   var left=GL.figLeft(g).length,c=GL.figCost(g),can=left&&g.gold>=c,n=GL.FIG.filter(function(F){return GL.figLv(g,F.id)>0}).length;
@@ -4183,7 +4183,7 @@ function shopHtml(){
   function row(u){var lv=Math.max(g.gu[u.id]||0,u.old?g.gu[u.old]||0:0),mx=lv>=u.max,c=GL.upCost(g,u.id),ok=!mx&&g.gold>=c;
     return '<button class="uc sh '+(mx?'mx':ok?'can':'off')+'" onclick="gBuy(\''+u.id+'\')"><span style="font-size:24px">'+u.ic+'</span><span style="flex:1">'+(function(){var tx=mx||!u.lt?u.d:'Lv'+(lv+1)+': '+(Array.isArray(u.lt)?u.lt[Math.min(lv,u.lt.length-1)]:u.lt),x=shD(tx,2);return '<b>'+u.n+'</b> <small>Lv '+lv+'/'+u.max+'</small>'+x.m+x.s+x.d})()+'</span><span class="pr">'+(mx?'MAX':'💰'+c+(ok?'':'<br><small>달란트 부족</small>'))+'</span></button>'}
   var left=GL.gachaLeft(g).length,gc=GL.gachaCost(g),can=left&&g.gold>=gc;
-  h+='<div class="gbox"><b>🎰 유니크 뽑기</b> <small>아직 없는 유니크 하나에 도전해요</small>'+
+  h+='<div class="gbox"><b>🎰 유니크 뽑기</b>'+
     '<button class="uc sh '+(left?(can?'can':'off'):'mx')+'" style="justify-content:center;margin-top:6px"'+(left?' onclick="gGacha()"':' disabled')+'><b>'+(left?'🎰 뽑기':'✅ 모든 유니크를 가졌어요')+'</b>'+(left?'<span class="pr" style="margin-left:8px">💰'+gc+(can?'':' · 부족')+'</span>':'')+'</button></div>';
   h+=figBox();
   h+='<div class="ih" style="margin:8px 0 2px">🏰 성과 금화</div>';
