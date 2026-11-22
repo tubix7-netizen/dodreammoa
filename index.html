@@ -2553,7 +2553,6 @@ var SYN={sea:"💪 삼손: 느려진 적에게 치명 피해 +40%",samson:"🌊 
 var UPG=[
 {id:"castle",ic:"🏰",n:"성 업그레이드",d:"성을 키우고 모든 능력치 상승",lt:["🏰 시온의 성채 · 장인(4단계) 카드 해금 · 공격력 +35% · 공격 속도 +6% · 체력 +400 · 회복 +2/초 · 최대 마나 +50 · 마나 회복 +0.5/초 · 치명타 +3% · 방어력 +9 · 스킬 효과 +10%","👑 새 예루살렘 · 전설 능력 해금 · 공격력 +35% · 공격 속도 +6% · 체력 +400 · 회복 +2/초 · 최대 마나 +50 · 마나 회복 +0.5/초 · 치명타 +3% · 방어력 +9 · 스킬 효과 +10%"],costs:[5000,20000],max:2},
 {id:"gold",ic:"💰",n:"달란트 획득 강화",d:"달란트 획득량 증가",lt:["달란트 획득량 +10% 증가","달란트 획득량 +11% 증가","달란트 획득량 +12% 증가","달란트 획득량 +13% 증가","달란트 획득량 +14% 증가","달란트 +15% · 🍀 행운 +10%","달란트 +16% · 🍀 행운 +10%","달란트 +17% · 🍀 행운 +10%","달란트 +18% · 🍀 행운 +10%","달란트 +19% · 🍀 행운 +10%"],base:200,gr:1.5,max:10},
-{id:"offer",ic:"🙏",n:"감사 헌금",d:"남는 달란트를 드려 공격력 · 마법 공격력 상승",lt:"공격력 · 마법 공격력 +2% (최대 +20%)",base:6000,gr:1.5,max:10},
 {id:"wpn",ic:"⚔️",n:"무기 강화",d:"물리 공격력 · 방어 관통 · 보스 추가 피해",lt:"물리 공격력 +15 · 방어 관통 +7% · 보스 추가 피해 +3%",costs:[300,750,1800,4200,8400],max:5,basic:1,old:"atk"},
 {id:"mas",ic:"🎯",n:"숙련도 강화",d:"공격 속도 · 치명타 · 치명 피해",lt:"공격 속도 +0.8/초 · 치명타 +4% · 치명 피해 +0.15배",costs:[300,750,1800,4200,8400],max:5,basic:1,old:"rate"},
 {id:"enl",ic:"✨",n:"깨달음 강화",d:"마법 공격력 · 정신 관통 · 속성 공격력",lt:"마법 공격력 +15 · 정신 관통 +7% · 속성 공격력 +15%",costs:[300,750,1800,4200,8400],max:5,basic:1},
@@ -2998,7 +2997,7 @@ function stats(g){var L=g.lv,U=uqE(g),G=g.lg,I=ibonus(g),Q=g.gu,C=Q.castle||0,s=
   if(f0=fM(g,"temper",0)){s.dotM*=1+.3*f0;s.fzDot*=1+.3*f0;s.slow=Math.min(.6,s.slow+.08*f0)}
   /* 성 업그레이드: 시드에 넣지 않고 아이템·카드처럼 위에 따로 더해요 */s.dmg*=1+.35*C;s.rate*=1+.06*C;s.maxhp+=400*C;s.regen+=2*C;s.mpMax+=50*C;s.crit=cC(s,s.crit+.03*C);s.armA+=ARMK((1-.072*UL)*(1-.05*C));s.sd+=.1*C;s.mpReg+=.5*C;s.pen=.07*UW+A([.05,.09,.14,.2],L.sword);s.bossMul*=1+.03*UW;var P=g.prep||{};s.dmg*=1+.01*(P.atk||0);s.maxhp*=1+.03*(P.hp||0);s.regen+=.25*(P.hp||0);s.mpMax*=1+.015*(P.mp||0);s.mpReg+=.1*(P.mp||0);s.mpMax=Math.round(s.mpMax);s.mpReg+=.0054*s.mpMax*UL;s.sd+=.144*UL;
   if(g.nt){s.dmg*=1.15;s.maxhp+=80;s.regen+=1}
-  if(g.gst)s.dmg*=1+.04*g.gst;if(g.gu&&g.gu.offer)s.dmg*=1+.02*g.gu.offer;
+  if(g.gst)s.dmg*=1+.04*g.gst;
   if(g.cert){s.dmg*=1.2;s.maxhp+=150}
   if(g.seal7){s.dmg*=1.3;s.maxhp*=1.25;s.armA+=ARMK(.88);s.rate*=1.1;s.mpMax*=1.2;s.regen+=4}
   if(g.truth){s.dmg*=1.2;s.maxhp*=1.2;s.armA+=ARMK(.9);s.goldM=(s.goldM||1)*1.2}
