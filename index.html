@@ -4804,8 +4804,8 @@ function jcFl(a,c){if(a>=JC.fa){JC.fa=a;JC.fc=c||"255,255,255"}}
 function jcVg(a,c){if(a>=JC.va){JC.va=a;JC.vc=c||"255,40,40"}}
 function juice(n){if(!g||g.lab&&g.labC&&g.labC.patk===0)return;switch(n){
   case"slash":jcHit(.06,.12);SND.thump(.22,140,.16);break;
-  case"crit":jcHit(.05,.15);jcFl(.1);SND.thump(.25,130,.18);break;
-  case"skill":jcHit(.07,.15);jcFl(.1);SND.thump(.28,120,.2);break;
+  case"crit":jcHit(.05,.15);SND.thump(.25,130,.18);break;
+  case"skill":jcHit(.07,.15);SND.thump(.28,120,.2);break;
   case"meteor":jcHit(.035,.3);SND.thump(.16,110,.18);break;
   case"ult":jcHit(.16,.1);jcFl(.3,"255,236,170");SND.thump(.45,95,.45);break;
   case"legend":jcFl(.18,"255,230,160");SND.thump(.25,110,.3);break;
@@ -4816,7 +4816,7 @@ function juice(n){if(!g||g.lab&&g.labC&&g.labC.patk===0)return;switch(n){
   case"boss":case"bossIntro":case"rDragon":case"rHuman":case"rWitch":case"rDemon":case"bossin":jcVg(.55,"200,20,30");jcFl(.12,"255,120,110");SND.thump(.5,60,.8);break;
   case"castle":jcVg(.3);break;
   case"shoot":case"hit":case"zap":case"chain":var w=JC.w||0;if(w>.15)SND.thump(.05+.2*w,170-80*w,.1+.12*w);break;
-  default:if(n.indexOf("elem:")===0){jcHit(.08,.15);jcFl(.2,n.slice(5));SND.thump(.3,110,.25)}}}
+  default:if(n.indexOf("elem:")===0){jcHit(.08,.15);jcFl(.07,n.slice(5));SND.thump(.3,110,.25)}}}
 function jcPow(){if(!g||!g.s)return 0;var L=0;if(g.lg)for(var k in g.lg)if(g.lg[k])L++;if(!g.dmg0||g.round<=1&&g.s.dmg<g.dmg0)g.dmg0=g.s.dmg;var gr=g.s.dmg/Math.max(1,g.dmg0);return Math.max(0,Math.min(1,.11*L+.38*Math.log(Math.max(1,gr))/Math.LN10))}
 function jcK(dt){if(JC.hs>0){JC.hs-=dt;return JC.hk}return 1}
 function jcDraw(){try{JC.w=jcPow();SND.heavy(JC.w)}catch(e){}var now=performance.now(),dt=Math.min(.1,(now-(JC.lt||now))/1000);JC.lt=now;
@@ -7341,7 +7341,7 @@ function sfExec(o,u,t,C,S){var x=o.x,y=o.y,c=C.e,L=(o.lg?120:92)*S,k;o.cx=x;o.cy
   var sw=Math.min(1,u/.2),fade=sfxEnv(u,.02,.45);
   for(k=0;k<2;k++){if(k&&u<.07)continue;var an=k?-.75:.75,ca=Math.cos(an),sa=Math.sin(an),sw2=k?Math.min(1,(u-.07)/.2):sw;sfSlash(x-ca*L,y-sa*L,x-ca*L+ca*2*L*sw2,y-sa*L+sa*2*L*sw2,(o.lg?11:8)*S,k&&C.hyb?C.e2:c,fade)}
   if(u>.18&&u<.6){var b=(u-.18)/.42;gx.lineWidth=1.6;for(k=0;k<14;k++){var ra=o.R[k]*6.283,r1=10+b*70*S,r2=r1+12+o.R[k+14]*18;gx.strokeStyle="rgba("+(k%2?C.w:c)+","+(1-b)+")";gx.beginPath();gx.moveTo(x+Math.cos(ra)*r1,y+Math.sin(ra)*r1);gx.lineTo(x+Math.cos(ra)*r2,y+Math.sin(ra)*r2);gx.stroke()}lglow(x,y,46*S*(1-b),c,.7*(1-b))}
-  if(!o.lite&&u>.17&&u<.24){gx.fillStyle="rgba(255,255,255,"+(.1*(1-(u-.17)/.07))+")";gx.fillRect(0,0,W,H)}}
+  }
 /* 매혹: 분홍 나선과 하트가 대상에게 빨려 들어가요 · 전설은 성 위 큰 만다라 */
 function sfCharm(o,u,t,C,S){var x=o.x,y=o.y,c="255,140,225",k,j,al=sfxEnv(u,.08,.6);o.cx=x;o.cy=y;gx.lineWidth=2;
   for(k=0;k<3;k++){gx.strokeStyle="rgba("+(k%2?C.e:c)+","+(.8*al)+")";gx.beginPath();for(j=0;j<=24;j++){var v=j/24,r=(1-v)*(80*S)*(1-ease(Math.min(1,u*1.3))*.6)+4,a=k*2.094+v*7+t*3,px=x+Math.cos(a)*r,py=y+Math.sin(a)*r*.85;if(j)gx.lineTo(px,py);else gx.moveTo(px,py)}gx.stroke()}
@@ -7627,7 +7627,7 @@ function draw(){
       skBtn(lx,ly,25,{ic:LK.ic,col:LK.rgb,ready:lrd,cd:lrd?0:g.lak/GL.LACT_CD,cdTxt:Math.ceil(g.lak||0)+"",tag:"전설"},t);
       if((g.sgT||0)>0)txt("🌾 곳간 "+Math.ceil(g.sgT)+"초",lx+30,ly-30,"bold 10px "+SF,"#ffd27a","left");else if(g.lgx&&g.lgx.e>g.t)txt(LK.ic+" "+Math.ceil(g.lgx.e-g.t)+"초",lx+30,ly-30,"bold 10px "+SF,LK.c,"left")}
   }
-  if(!g.surv&&g.mons){var IB=null;for(var ii=0;ii<g.mons.length;ii++){var mq=g.mons[ii];if(mq.intE>g.t&&mq.hp>0){IB=mq;break}}if(IB){var ia=Math.min(1,(IB.intE-g.t)/.35,(g.t-(IB.intE-IB.intT))/.25),iy=CY-150;gx.globalAlpha=Math.max(0,ia);gx.fillStyle="rgba(10,6,20,.82)";var ibt=GL.bTr(g,g.rd),ih=ibt?62:44;gx.fillRect(0,iy-30,W,ih);gx.fillStyle="rgba(255,120,90,.9)";gx.fillRect(0,iy-30,W,2);gx.fillRect(0,iy-30+ih,W,2);if(ibt)txt(ibt,CX,iy+16,"bold 11px "+SF,"#ffd0c0");txt("👹 "+IB.intN+" 등장!",CX,iy-10,"bold 17px "+SF,"#ffd0c0");gx.globalAlpha=1}}if(g.banner>0&&g.state==="play"){var rr=g.rd,boss=!!rr.b,el=!!rr.el||(!!rr.tb&&!rr.mini);if(g.bnK!==g.round+(g.surv?"s":"")){g.bnK=g.round+(g.surv?"s":"");g.bnT0=t}var bFi=Math.max(0,Math.min(1,(t-(g.bnT0||t))/.7)),bFo=Math.max(0,Math.min(1,g.banner/1.2));bFi=bFi*bFi*(3-2*bFi);bFo=bFo*bFo*(3-2*bFo);gx.globalAlpha=bFi*bFo;
+  if(!g.surv&&g.mons){var IB=null;for(var ii=0;ii<g.mons.length;ii++){var mq=g.mons[ii];if(mq.intE>g.t&&mq.hp>0){IB=mq;break}}if(IB){var ia=Math.min(1,(IB.intE-g.t)/.35,(g.t-(IB.intE-IB.intT))/.25),iy=CY-150;gx.globalAlpha=Math.max(0,ia);gx.fillStyle="rgba(10,6,20,.82)";var ibt=GL.bTr(g,g.rd),ih=ibt?62:44;gx.fillRect(0,iy-30,W,ih);gx.fillStyle="rgba(255,120,90,.9)";gx.fillRect(0,iy-30,W,2);gx.fillRect(0,iy-30+ih,W,2);if(ibt)txt(ibt,CX,iy+16,"bold 11px "+SF,"#ffd0c0");txt("👹 "+IB.intN+" 등장!",CX,iy-10,"bold 17px "+SF,"#ffd0c0");gx.globalAlpha=1}}if(g.banner>0&&g.state==="play"){var rr=g.rd,boss=!!rr.b,el=!!rr.el||(!!rr.tb&&!rr.mini);if(g.bnK!==g.round+(g.surv?"s":"")){g.bnK=g.round+(g.surv?"s":"");g.bnT0=t}var bFi=Math.max(0,Math.min(1,(t-(g.bnT0||t))/.7)),bFo=Math.max(0,Math.min(1,g.banner/1.2));bFi=bFi*bFi*(3-2*bFi);bFo=bFo*bFo*(3-2*bFo);gx.globalAlpha=bFi*bFo;gx.shadowBlur=0;gx.shadowOffsetX=0;gx.shadowOffsetY=0;gx.shadowColor="rgba(0,0,0,0)";
     if(boss){gx.fillStyle=el?"rgba(255,170,0,"+(.1+.08*Math.sin(t*10))+")":"rgba(200,20,20,"+(.1+.08*Math.sin(t*10))+")";gx.fillRect(0,0,W,H)}
     if(g.bnK!==g.round+(g.surv?"s":"")){g.bnK=g.round+(g.surv?"s":"");g.bnT0=t}var be=Math.min(1,(t-(g.bnT0||t))/.45),bk=1-Math.pow(1-be,3),bov=0;
     var cw=W-36,cx0=18,cy0=126+(1-bk)*12-(1-bFo)*8,ch=boss?150:132,th=el?["rgba(140,78,14,.94)","rgba(46,20,4,.95)","255,200,110"]:boss?["rgba(120,22,34,.94)","rgba(38,6,12,.95)","255,130,130"]:g.surv?["rgba(84,30,140,.94)","rgba(26,8,48,.95)","200,150,255"]:["rgba(30,48,108,.93)","rgba(10,16,42,.95)","255,224,102"];
