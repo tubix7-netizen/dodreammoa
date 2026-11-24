@@ -5382,7 +5382,7 @@ function drawCastle(t,near){
     gx.save();gx.translate(CX,CY+12+bob);gx.drawImage(img,-w/2,-h,w,h);gx.restore();
   }
 }
-var PC={light:"190,240,255",holy:"255,246,190",fire:"255,120,40",ice:"150,225,255",wind:"255,235,120",poison:"130,230,80"};
+var PC={light:"190,240,255",holy:"255,246,190",fire:"255,120,40",ice:"150,225,255",wind:"255,235,120",poison:"130,230,80"};var STKC={light:"255,248,205",fire:"255,80,30",ice:"190,238,255",wind:"255,238,95",poison:"170,90,235"};
 /* 두 속성 혼합: 모든 투사체가 섞인 색 하나로 (번갈아 나오지 않아요) */var HYS={"fire|ice":"nova2","fire|wind":"flamedart","fire|poison":"ember","fire|light":"star","ice|wind":"snow","ice|poison":"bubble","ice|light":"crystal","poison|wind":"wisp","light|wind":"spark","light|poison":"leaf"};
 function pcol(p,s){if(p.fol)return"190,225,255";if(p.el){if(g&&g.elem&&g.elem2&&g.elem2!==g.elem){var hc=GL.hxCol(g.elem,g.elem2)||HYB[hybK(g.elem,g.elem2)];if(hc)return hc}if(g&&g.elem&&g.elem2===g.elem&&STKC[p.el]&&p.el===g.elem)return STKC[p.el];return PC[p.el]}var cs=[];if(s.burn)cs.push("255,140,50");if(s.fz)cs.push("150,225,255");if(s.chain)cs.push("205,175,255");if(!cs.length)cs.push("255,224,102");
   if(p.c===undefined)p.c=pcnt++;return cs[p.c%cs.length]}
