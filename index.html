@@ -3152,7 +3152,7 @@ function elemOn(g,q,s,el,d,k){if(!el||q.hp<=0)return;k=k||1;var od=DEL;
   if(g.qual&&Math.random()<.4)vfx(g,{k:"eh",x:q.x,y:q.y,t:.4,e:el})}
 function elemBurst(g,x,y,R,el,d){if(!el)return;var od=DEL,om=DMT;DEL=el;DMT=null;g.mons.forEach(function(q){if(q.hp>0&&Math.hypot(q.x-x,q.y-y)<R+q.sz*.3){hurt(g,q,d*.35,false);elemOn(g,q,g.s,el,d*.35,1)}});DEL=od;DMT=om;vfx(g,{k:"mtl",x:x,y:y,t:1,r:R*.8,e:el})}
 /* v20 두 번째 깨달음 (유니크 7개) · 같은 속성이면 중첩 */
-var ELC={fire_fire:"겹불 · 소멸하는 불",ice_ice:"겹얼음 · 영원한 서리",wind_wind:"겹우뢰 · 일곱 우뢰",poison_poison:"겹독 · 죄의 삯",light_light:"겹빛 · 영광의 광채",fire_ice:"증기 폭풍",fire_wind:"불의 회오리",fire_poison:"유황불",fire_light:"정결케 하는 불",ice_wind:"눈보라",ice_poison:"독서리",ice_light:"수정 광채",wind_poison:"역병의 바람",wind_light:"번갯빛",poison_light:"속죄의 빛"};
+var ELC={fire_fire:"화염",ice_ice:"냉기",wind_wind:"우뢰",poison_poison:"어둠",light_light:"광원",fire_ice:"용암",fire_wind:"불의 회오리",fire_poison:"연기",fire_light:"정결케 하는 불",ice_wind:"빙뇌",ice_poison:"서리",ice_light:"수정 광채",wind_poison:"검은 구름",wind_light:"번갯빛",poison_light:"어둠을 지배하는 빛"};
 /* ===== v18.56 몬스터 방어력·정신력 · 물리/마법 공격 · 회복력 감소 · 독 흡혈 · 보스 기믹과 지침 ===== */
 var LPO=0,BGP=1,BGMk=1;for(var _mk in MT)MT[_mk]._k=_mk;
 /* 일반 몬스터: [방어력 배율, 정신력 배율, 공격(p 물리 · m 마법 · h 번갈아)] — 라운드 방어력에 곱하고, 정신력은 라운드마다 조금씩 더 올라가요 */
@@ -3518,19 +3518,19 @@ light_poison:{n:"향유",c:"215,255,185",d:"잘 다스린 독은 약이 돼요",
 fire_light:{n:"하얀 불꽃",c:"255,240,215",d:"빛을 머금어 하얗게 타는 뜨거운 불",ab:"화상 피해 ×1.4"},
 fire_ice:{n:"용암",c:"255,85,30",d:"겉은 굳어도 속은 끓는 불",ab:"15% 확률로 맞은 자리에 2.5초간 용암 웅덩이"},
 fire_wind:{n:"폭발",c:"255,160,60",d:"번개 불똥에 불이 붙어 터져요",ab:"12% 확률로 맞은 자리에서 폭발 (피해 60% · 밀쳐냄)"},
-fire_poison:{n:"독연기",c:"205,205,90",d:"독을 태워 피어오른 연기",ab:"12% 확률로 독연기가 퍼져 주변 적 중독"},
+fire_poison:{n:"연기",c:"170,155,190",d:"불에 타 피어오른 어두운 연기",ab:"12% 확률로 연기가 퍼져 주변 적 중독"},
 ice_light:{n:"오로라",c:"150,255,215",d:"차가운 하늘에 일렁이는 빛",ab:"느려진 적이 받는 피해 +15% (보스 +8%)"},
-ice_fire:{n:"얼음 안개",c:"215,232,245",d:"찬 기운과 열기가 만나 생긴 안개",ab:"7초마다 성 주변에 안개가 퍼져 적을 크게 느리게 해요 (60% · 2.5초)"},
-ice_wind:{n:"번개 얼음",c:"150,195,255",d:"전기를 품은 얼음 조각",ab:"느려지거나 얼어붙은 적을 맞히면 30% 확률로 주변 2마리 감전 (피해 40%)"},
-ice_poison:{n:"독서리",c:"110,225,195",d:"녹지 않는 독 서리",ab:"느려진 적은 4초간 회복을 못 하고 중독이 더 오래가요"},
+ice_fire:{n:"증기",c:"232,240,248",d:"찬 기운과 열기가 만나 피어오른 하얀 증기",ab:"7초마다 성 주변에 증기가 퍼져 적을 크게 느리게 해요 (60% · 2.5초)"},
+ice_wind:{n:"빙뇌",c:"120,205,255",d:"얼음 속에 갇혀 울리는 우레",ab:"느려지거나 얼어붙은 적을 맞히면 30% 확률로 주변 2마리 감전 (피해 40%)"},
+ice_poison:{n:"서리",c:"175,150,240",d:"녹지 않는 어둠의 서리",ab:"느려진 적은 4초간 회복을 못 하고 중독이 더 오래가요"},
 wind_light:{n:"심판의 벼락",c:"255,245,165",d:"하늘에서 내리치는 벼락",ab:"5초마다 가장 강한 적에게 벼락 (공격력 ×3 · 반드시 치명타)"},
 wind_fire:{n:"붉은 번개",c:"255,95,75",d:"지나간 자리를 태우는 번개",ab:"30% 확률로 주변 적 2마리에게 불이 옮아붙어요"},
-wind_ice:{n:"끝없는 번개",c:"140,225,255",d:"얼음을 타고 멀리 이어지는 번개",ab:"25% 확률로 주변 3마리에게 번개가 더 튀어요 (피해 20%) · 공격 속도 +8%"},
-wind_poison:{n:"마비 번개",c:"195,255,95",d:"몸을 굳게 만드는 번개",ab:"중독된 적을 맞히면 0.6초 기절 (적마다 2초에 한 번)"},
-poison_light:{n:"환각 독",c:"230,150,255",d:"헛것을 보게 하는 독",ab:"8% 확률로 일반 적이 겁에 질려 1.5초간 도망가요"},
-poison_fire:{n:"녹이는 산",c:"205,255,60",d:"열로 진해진 독",ab:"맞을 때마다 몸이 녹아 받는 피해가 쌓여요 (최대 +15% · 보스 +8%)"},
-poison_ice:{n:"잠든 독",c:"90,200,170",d:"얼어서 잠들어 있던 독",ab:"맞을 때마다 독이 쌓였다가 4초 뒤 한 번에 터져요 (쌓인 피해 ×1.5)"},
-poison_wind:{n:"전염병",c:"150,230,60",d:"번개처럼 옮겨 다니는 병",ab:"중독된 적이 쓰러지면 주변 3마리에게 독이 옮아요"}};
+wind_ice:{n:"뇌운",c:"140,165,215",d:"얼음 구름을 타고 멀리 이어지는 번개",ab:"25% 확률로 주변 3마리에게 번개가 더 튀어요 (피해 20%) · 공격 속도 +8%"},
+wind_poison:{n:"검은 구름",c:"135,95,195",d:"몸을 굳게 만드는 어둡고 무거운 구름",ab:"중독된 적을 맞히면 0.6초 기절 (적마다 2초에 한 번)"},
+poison_light:{n:"어둠을 지배하는 빛",c:"210,160,255",d:"어둠을 다스리는 빛이 헛것을 보게 해요",ab:"8% 확률로 일반 적이 겁에 질려 1.5초간 도망가요"},
+poison_fire:{n:"화산",c:"205,55,70",d:"어둠 속에서 끓어올라 터지는 불",ab:"맞을 때마다 몸이 녹아 받는 피해가 쌓여요 (최대 +15% · 보스 +8%)"},
+poison_ice:{n:"잠들게하는 신",c:"110,130,235",d:"차갑고 깊은 어둠이 재워 두었던 힘",ab:"맞을 때마다 어둠이 쌓였다가 4초 뒤 한 번에 터져요 (쌓인 피해 ×1.5)"},
+poison_wind:{n:"전파",c:"185,110,235",d:"번개처럼 퍼져 나가는 어둠",ab:"중독된 적이 쓰러지면 주변 3마리에게 중독이 옮아요"}};
 function hxHex(c){return"#"+c.split(",").map(function(v){var h=(+v).toString(16);return h.length<2?"0"+h:h}).join("")}
 function hxInfo(a,b){if(!a||!b)return null;if(a===b)return{n:ELC[a+"_"+b]||"",same:1,d:"같은 속성이 겹쳐 더 강해져요",ab:"속성 카드·장인 스킬·전설 스킬이 더 강해져요"};var H=HX[a+"_"+b];return H?{n:H.n,c:H.c,d:H.d,ab:H.ab}:null}
 function hxCol(a,b){var H=a&&b&&a!==b?HX[a+"_"+b]:null;return H?H.c:null}
@@ -3557,7 +3557,8 @@ function hxOn(g,tg,s,d,p){var k=s.hx;if(!k||!tg||tg.hp<=0)return;var od=DEL,R=Ma
  case"poison_ice":if(!(tg.hxB>0))tg.hxE=g.t+4;tg.hxB=Math.min((tg.hxB||0)+d*.12,tg.boss?1e15:tg.mhp*.6);break}}finally{DEL=od}}
 function hxDie(g,s,m){if(s.hx==="poison_wind"&&m.poiT>0){nearN(g,m.x,m.y,3,140,m).forEach(function(o){o.poiT=Math.max(o.poiT||0,4);o.poiD=Math.max(o.poiD||0,m.poiD||o.mhp*(o.boss?.0018:.012));hxArc(g,m,o,HX.poison_wind.c)})}}
 var ECOL0={fire:["255,140,60","#ff8c3c"],ice:["150,220,255","#9adcff"],light:["255,250,220","#fff8d8"],wind:["255,232,110","#ffe86e"],poison:["150,235,90","#96eb5a"]};
-function ecolSet(s){for(var k in ECOL0)ECOL[k]=ECOL0[k];if(s.hx){var c=HX[s.hx].c;ECOL[s.elem]=[c,hxHex(c)]}}
+var STKC={light:"255,248,205",fire:"255,80,30",ice:"190,238,255",wind:"255,238,95",poison:"170,90,235"};
+function ecolSet(s){for(var k in ECOL0)ECOL[k]=ECOL0[k];if(s.hx){var c=HX[s.hx].c;ECOL[s.elem]=[c,hxHex(c)]}else if(s.elem&&s.elem2===s.elem&&STKC[s.elem]){var c2=STKC[s.elem];ECOL[s.elem]=[c2,hxHex(c2)]}}
 var ECOL={fire:["255,140,60","#ff8c3c"],ice:["150,220,255","#9adcff"],light:["255,250,220","#fff8d8"],wind:["255,232,110","#ffe86e"],poison:["150,235,90","#96eb5a"]},ESFX={fire:"meteor",ice:"freeze",light:"freeze",wind:"zap",poison:"hit"};
 var CVO=null,SKN={M_fire:"fire",M_freeze:"ice",M_chain:"wind",M_chariot:"fire",L_comet:"fire",L_glacier:"ice",L_thunder:"wind",L_judge:"light",A_comet:"fire",A_glacier:"ice",A_thunder:"wind"},SKNC={L_judge:1},SKBK=1.4;
 function skCv(g,id){var n=SKN[id],e=g&&g.s&&g.s.cvE;if(!n||!e||!ECOL[e])return null;if(e===n&&g.s.hx)return null;if(e===n)return{n:n,e:null,k:SKBK,g:g};if(SKNC[id])return null;return{n:n,e:e,k:1,g:g}}
@@ -5062,13 +5063,13 @@ function eskTabHtml(){var s=GL.S(g),hh=hz(),k=skI(),H=g.horse,h='<b style="font-
   else h+='<div class="ih">🔘 속성 스킬</div><div class="ir" style="text-align:left"><small>🔒 '+(H?'유니크 능력 3개를 모아 <b>깨달음</b>을 얻으면 열려요 ('+Object.keys(g.uq).length+'/3)':'말을 얻고, 유니크 능력 3개로 깨달음을 얻으면 열려요')+'</small></div>';
   if(g.elem){var e=EL[g.elem];h+='<div class="ih" style="color:rgb('+e.col+')">🌿 깨달음 속성</div>';
     h+=skCard(e.ic,e.col,'자동 · 패시브',e.n+' 속성'+(s.evo?' ✨진화':''),'<span style="font-size:11px;padding:2px 7px;border-radius:9px;background:rgba(120,230,140,.2);color:#b6ffbf">✅ 자동</span>','','내 화살에 '+e.n+' 속성이 깃들어요 · '+String(e.d).split(' · ').slice(0,2).join(' · '),s.evo?'':'#유니크 7개를 모으면 진화해요 ('+Object.keys(g.uq).length+'/7)',e.d+(s.evo?'<br>✨ 진화: '+EVD[g.elem]:''));
-    if(g.elem2){var e2=EL[g.elem2];h+=skCard(e2.ic,e2.col,'두 번째 깨달음 · 자동',g.elem2===g.elem?e2.n+' 중첩':GL.elCombo(g.elem,g.elem2),'<span style="font-size:11px;padding:2px 7px;border-radius:9px;background:rgba(120,230,140,.2);color:#b6ffbf">✅ 자동</span>','',(g.elem2===g.elem?'같은 속성이 겹쳐 속성 공격력 +30%':'두 속성이 화살에 함께 묻어요 · 속성 공격력 +18%'),g.geuk?'#🌌 극(極) 달성!':'#유니크 12개를 모두 모으면 🌌 극(極) ('+Object.keys(g.uq).length+'/12)','')}}
+    if(g.elem2){var e2=EL[g.elem2];h+=skCard(e2.ic,e2.col,'두 번째 깨달음 · 자동',GL.elCombo(g.elem,g.elem2),'<span style="font-size:11px;padding:2px 7px;border-radius:9px;background:rgba(120,230,140,.2);color:#b6ffbf">✅ 자동</span>','',(g.elem2===g.elem?'같은 속성이 겹쳐 속성 공격력 +30%':'두 속성이 화살에 함께 묻어요 · 속성 공격력 +18%'),g.geuk?'#🌌 극(極) 달성!':'#유니크 12개를 모두 모으면 🌌 극(極) ('+Object.keys(g.uq).length+'/12)','')}}
   return infoWrap(h)}
 function infoHtml(){if(g.itab==="esk")return eskTabHtml();
   var s=GL.S(g),ms=GL.mastery(g),tr=ms.tree?GL.TREES[ms.tree]:null;
   var h='<b style="font-size:17px">🎒 내 정보</b><div style="font-size:11px;opacity:.92;margin:4px 0 6px">⚔️ 물리 공격력 '+Math.round(s.ad||s.dmg)+' · 🔮 마법 공격력 '+Math.round(s.ap||s.dmg)+' · 공속 '+s.rate.toFixed(2)+'/초 · 화살 '+s.multi+'개 · 치명 '+Math.round(s.crit*100)+'% · 스킬 공격력 ×'+s.sd.toFixed(2)+' · 체력 '+Math.min(Math.ceil(g.hp),Math.round(g.maxhp))+'/'+Math.round(g.maxhp)+'</div>';
   var nL2=Object.keys(g.lg).length;if(g.prim){var PI=GL.byId(GL.PRIM,g.prim);h+='<div class="ir" style="border:1px solid rgba('+PI.col+',.85);box-shadow:0 0 10px rgba('+PI.col+',.4)">'+PI.ic+' <b style="color:rgb('+PI.col+')">태초의 아이템 · '+PI.n+'</b><br><small>'+PI.d+'<br>'+PI.sk.map(function(k){return '⚡ '+k[0]+' ('+k[1]+'초마다) — '+k[2]}).join('<br>')+'</small></div>'}
-  if(g.elem2)h+='<div class="ir">🌌 <b>두 번째 깨달음 · '+EL[g.elem2].ic+' '+EL[g.elem2].n+(g.elem2===g.elem?' (중첩)':' · '+GL.elCombo(g.elem,g.elem2))+'</b><br><small>'+(function(){var X=GL.hxInfo(g.elem,g.elem2);return X&&!X.same?X.d+'<br>✨ '+X.ab+'<br>':''})()+'두 속성 효과가 화살에 함께 묻어요'+(g.geuk?'<br>🌌 극(極) · 유니크 12개 · 속성 공격력 +30% · 물리·마법 공격력 +10% · 화살이 가끔 속성 폭발':'')+'</small></div>';
+  if(g.elem2)h+='<div class="ir">🌌 <b>두 번째 깨달음 · '+EL[g.elem2].ic+' '+EL[g.elem2].n+(' · '+GL.elCombo(g.elem,g.elem2)+(g.elem2===g.elem?' (중첩)':''))+'</b><br><small>'+(function(){var X=GL.hxInfo(g.elem,g.elem2);return X&&!X.same?X.d+'<br>✨ '+X.ab+'<br>':''})()+'두 속성 효과가 화살에 함께 묻어요'+(g.geuk?'<br>🌌 극(極) · 유니크 12개 · 속성 공격력 +30% · 물리·마법 공격력 +10% · 화살이 가끔 속성 폭발':'')+'</small></div>';
   h+='<div class="ir">🦁🐂🧑🦅 <b>네 생물의 찬양 '+(nL2>=4?'· 깨어남!':'· 전설 '+nL2+'/4')+'</b><br><small>전설 능력 4개를 모으면 공격력 +20% · 성 체력 +10% · 방어력 +16 · 공격 속도 +5%'+(g.gst?'<br>⭐ 황금 별 '+g.gst+'개 · 공격력 +'+(g.gst*2)+'%':'')+'</small></div>'+(g.lu?'<div class="ir">🌈 <b>전설 능력 강화 Lv '+Math.min(g.lu,GL.LUP.max)+'/'+GL.LUP.max+'</b><br><small>올스탯 +'+(10*Math.min(g.lu,GL.LUP.max))+'% · 전설 능력 +'+(10*g.lu)+'% · 아이템 효과 +'+(6*g.lu)+'%<br>'+GL.LUN.slice(1,Math.min(g.lu,GL.LUP.max)+1).join('<br>')+'</small></div>':'');
   h+='<div class="ir">✨ <b>황금 카드</b><br><small>가끔 금빛으로 빛나는 카드가 나와요. 고르면 능력이 두 단계 한꺼번에 올라요 · 이미 가진 능력일수록 잘 나오고, 같은 카드가 4번 연속 나오면 반드시 황금 카드가 돼요 · 한 단계밖에 못 오르면 남는 한 단계는 ⭐ 황금 별 (공격력 +2%)</small></div>';
   var mkl=GL.mkList(g);if(mkl.length){h+='<div class="ih">⚡ 장인·전설 스킬</div>'+mkl.map(function(e){var k=e.k,pr=k.ta?((g.mkC&&g.mkC[e.id])||0)+'/'+k.ta+'타':Math.max(0,Math.ceil(g.mkT&&g.mkT[e.id]!==undefined?g.mkT[e.id]:k.tm*.5))+'초 뒤';return '<div class="ir">'+k.ic+' <b>'+k.n+'</b> <small>'+(e.lg?'전설':'장인')+' · '+GL.mkTrig(k)+' · '+pr+'</small><br><small>'+k.d+'</small></div>'}).join('')+'<div class="ir"><small>1타 = 화살을 한 번 발사할 때 · 화살 개수와 상관없고 공격 속도가 빠를수록 빨리 차요</small></div>'}
@@ -5382,7 +5383,7 @@ function drawCastle(t,near){
 }
 var PC={light:"190,240,255",holy:"255,246,190",fire:"255,120,40",ice:"150,225,255",wind:"255,235,120",poison:"130,230,80"};
 /* 두 속성 혼합: 모든 투사체가 섞인 색 하나로 (번갈아 나오지 않아요) */var HYS={"fire|ice":"nova2","fire|wind":"flamedart","fire|poison":"ember","fire|light":"star","ice|wind":"snow","ice|poison":"bubble","ice|light":"crystal","poison|wind":"wisp","light|wind":"spark","light|poison":"leaf"};
-function pcol(p,s){if(p.fol)return"190,225,255";if(p.el){if(g&&g.elem&&g.elem2&&g.elem2!==g.elem){var hc=GL.hxCol(g.elem,g.elem2)||HYB[hybK(g.elem,g.elem2)];if(hc)return hc}return PC[p.el]}var cs=[];if(s.burn)cs.push("255,140,50");if(s.fz)cs.push("150,225,255");if(s.chain)cs.push("205,175,255");if(!cs.length)cs.push("255,224,102");
+function pcol(p,s){if(p.fol)return"190,225,255";if(p.el){if(g&&g.elem&&g.elem2&&g.elem2!==g.elem){var hc=GL.hxCol(g.elem,g.elem2)||HYB[hybK(g.elem,g.elem2)];if(hc)return hc}if(g&&g.elem&&g.elem2===g.elem&&STKC[p.el]&&p.el===g.elem)return STKC[p.el];return PC[p.el]}var cs=[];if(s.burn)cs.push("255,140,50");if(s.fz)cs.push("150,225,255");if(s.chain)cs.push("205,175,255");if(!cs.length)cs.push("255,224,102");
   if(p.c===undefined)p.c=pcnt++;return cs[p.c%cs.length]}
 function circBtn(x,y,r,ic,on){gx.fillStyle="rgba(16,36,77,.6)";gx.beginPath();gx.arc(x,y,r,0,7);gx.fill();sp(ic,r+1,x,y+1)}
 var HX={};function hrgb(c){var r=HX[c];if(r)return r;var h=c&&c.charAt(0)==="#"?c.slice(1):"ffffff";if(h.length===3)h=h[0]+h[0]+h[1]+h[1]+h[2]+h[2];r=parseInt(h.slice(0,2),16)+","+parseInt(h.slice(2,4),16)+","+parseInt(h.slice(4,6),16);HX[c]=r;return r}
@@ -6979,7 +6980,7 @@ function lgOf(p,sk){if(p.gem)return"gem";if(p.rev)return"orb";if(p.gs)return"sto
   var e=p.el;return e==="ice"?"shard":e==="wind"?"bolt":e==="poison"?"drop":e==="fire"?"flame":(p.fol?"feather":"comet")}
 function lgDraw(p,i,t,hi,s,col,psz,dt){
   var sk=p.sk,md=p.md===undefined?(p.md=pmod(p)):p.md,key=p._lg||(p._lg=lgOf(p,sk)),G=LGL[key],E=sk&&ENS[sk],lm=LM==="lighter";
-  var c=p._lc;if(!c||p._lcv!==col){var hyc=(p.el&&g.elem&&g.elem2&&g.elem2!==g.elem&&!p.fol)?(GL.hxCol(g.elem,g.elem2)||HYB[hybK(g.elem,g.elem2)]):null,b0=hyc?hyc:p.gem?"140,230,255":p.rev?"255,236,170":p.gs?"235,215,170":p.hv?"255,225,140":E?enCol(sk,p,md):((md&&MODC[md])||(sk&&SKC0[sk])||(sk==="gold"?"255,215,90":col));c=p._lc=vivid(b0);p._lcv=col}
+  var c=p._lc;if(!c||p._lcv!==col){var hyc=(p.el&&g.elem&&g.elem2&&g.elem2!==g.elem&&!p.fol)?(GL.hxCol(g.elem,g.elem2)||HYB[hybK(g.elem,g.elem2)]):((p.el&&g.elem&&g.elem2===g.elem&&p.el===g.elem&&!p.fol&&STKC[g.elem])?STKC[g.elem]:null),b0=hyc?hyc:p.gem?"140,230,255":p.rev?"255,236,170":p.gs?"235,215,170":p.hv?"255,225,140":E?enCol(sk,p,md):((md&&MODC[md])||(sk&&SKC0[sk])||(sk==="gold"?"255,215,90":col));c=p._lc=vivid(b0);p._lcv=col}
   var tier=(p.fruit||p.soul||p.lamp)?0:E?E[0]:(SKT[sk]||0);if(p.rev||p.gold2)tier=3;if(s.evo&&p.el&&!p.fol)tier=Math.max(tier,2);
   var z=psz*(p.fol?.78:1)*(p.rev?1.7:p.gs?1.25:p.gold2?1.2:p.hv?.8:1),T=G.T*(tier>=3?1.25:tier>=2?1.12:1),w=G.w*z*(tier>=3?1.18:1),h=p._h||(p._h=[]),L=h[h.length-1];
   if(L&&Math.abs(L[0]-p.x)+Math.abs(L[1]-p.y)>70)h.length=0;L=h[h.length-1];
@@ -7070,8 +7071,8 @@ function csDeco(d,x,y,z,t,i,c){var a=t*6+i*1.3,R=11*z,ax=x+Math.cos(a)*R,ay=y+Ma
   gx.restore()}
 /* 깨달음 속성: 하나 · 중첩(같은 속성 두 번) · 혼합(두 속성)에 따라 빛 색 · 입자 · 타격 · 보호막이 함께 달라져요 */
 var ELN={fire:"🔥 불",ice:"❄️ 얼음",wind:"⚡ 바람",poison:"☠️ 독",light:"💡 빛"};
-var HYN={"fire|ice":"♨️ 증기","fire|wind":"🌪️ 화염 폭풍","fire|poison":"🌋 유황","fire|light":"☀️ 태양","ice|wind":"🌨️ 눈보라","ice|poison":"🧪 서리독","ice|light":"💎 수정빛","poison|wind":"🌫️ 독안개","light|wind":"⚡ 번개빛","light|poison":"🌿 정화"};
-function csEl(){var P=pfP();if(P.md==="none")return null;var k=P.md==="hybrid"?hybK(P.e1,P.e2):null;return{md:P.md,e1:P.e1,e2:P.e2,c1:P.c1,c2:P.c2,hc:P.hc,nm:P.md==="hybrid"?(HYN[k]||"혼합"):P.md==="double"?ELN[P.e1]+" 중첩":ELN[P.e1]}}
+var HYN={"fire|ice":"♨️ 증기","fire|wind":"🌪️ 폭발","fire|poison":"🌋 연기","fire|light":"☀️ 태양","ice|wind":"🌨️ 빙뇌","ice|poison":"❄️ 서리","ice|light":"💎 수정빛","poison|wind":"🌑 전파","light|wind":"⚡ 섬광","light|poison":"🌗 어둠을 지배하는 빛"};
+function csEl(){var P=pfP();if(P.md==="none")return null;var k=P.md==="hybrid"?hybK(P.e1,P.e2):null;return{md:P.md,e1:P.e1,e2:P.e2,c1:P.c1,c2:P.c2,hc:P.hc,nm:P.md==="hybrid"?(GL.elCombo(P.e1,P.e2)||HYN[k]||"혼합"):P.md==="double"?(GL.elCombo(P.e1,P.e1)||ELN[P.e1]+" 중첩"):ELN[P.e1]}}
 function hue(h){h=((h%1)+1)%1;var r=Math.abs(h*6-3)-1,g2=2-Math.abs(h*6-2),b=2-Math.abs(h*6-4);return[r,g2,b].map(function(v){return Math.round(80+175*Math.max(0,Math.min(1,v)))}).join(",")}
 function mixC(a,b,f){return pmixC(a,b,f)}
 /* 속성 입자: 한 점에서 그 속성다운 빛을 톡 (중첩은 더 크고 자주) */
@@ -7205,7 +7206,7 @@ var PFLS={judge:"flamesword",dpierce:"whitestone",thunder:"thunderorb",glacier:"
 var PFCR={sword:1,pierce:1,samson:1,wisdom:1,bounce:1,sling:1,chain:1,freeze:1,star:1};
 var LGE2={comet:"255,110,40",glacier:"150,225,255",judge:"255,236,160",covenant:"235,50,80",thunder:"200,185,255",spirit:"255,140,235",river:"110,255,150",fortress:"255,220,130",dpierce:"235,245,255",revel:"255,226,140",starfood:"255,244,180",army:"255,232,160",season:"255,196,80",firstres:"255,180,220"};
 var ELV={light:"255,240,170",fire:"255,110,30",ice:"120,210,255",wind:"255,228,80",poison:"120,230,60"};
-var HYB={"fire|ice":"235,240,255","fire|wind":"225,130,255","fire|poison":"200,255,70","fire|light":"255,248,200","ice|wind":"210,245,255","ice|poison":"110,255,200","ice|light":"205,245,255","poison|wind":"190,255,110","light|wind":"255,255,220","light|poison":"225,255,190"};
+var HYB={"fire|ice":"235,240,255","fire|wind":"225,130,255","fire|poison":"170,155,190","fire|light":"255,248,200","ice|wind":"210,245,255","ice|poison":"175,150,240","ice|light":"205,245,255","poison|wind":"185,110,235","light|wind":"255,255,220","light|poison":"210,160,255"};
 function hybK(a,b){return a<b?a+"|"+b:b+"|"+a}
 var PFV=-1,PFG=null,PFP=null;
 function pfP(){if(PFP&&PFV===g.ver&&PFG===g)return PFP;PFV=g.ver;PFG=g;var L=g.lv||{},G=g.lg||{},k,all=[],prim=null,cr=0,cp=0;
