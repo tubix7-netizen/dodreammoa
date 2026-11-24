@@ -4010,7 +4010,7 @@ function labStep(g,dt){g.sp=99;var C=g.labC,P=labPos(g);
    속성 스킬 20종 (액티브) + 같은 속성 중첩 패시브 20종 */
 /* v200 개편 설명문 */
 Object.assign(HORSE.white,{bn:"활을 가졌고",bs:"가장 강한 적을 조준해 큰 활",bd:"가장 강한 적을 락온하고 3초(권능 단계마다 -0.3초) 조준한 뒤 큰 활을 쏴요 (공격력 ×12 · 30% 방어 무시) · 조준 중 대상이 쓰러지면 다음 강한 적으로 바뀌고 대기시간이 절반이 돼요 · (패시브) 화살이 빛의 화살로 바뀌고 모든 능력이 늘어요 · ⚔️ 물리 피해"});
-Object.assign(HORSE.red,{bn:"큰 칼",bs:"가장 강한 적을 베고 5초 안에 다시 누르면 연계",bd:"1타: 가장 강한 적과 그 주변을 큰 칼로 베요 · 5초 안에 다시 누르면 마나 절반으로 다음 타 (피해 70%) · 누를 때마다 5초가 다시 채워져요 · 마지막 타를 치거나 5초가 지나면 그때 대기시간이 돌아요 · 말: 2타 · 말의 권능 카드 1장 이상: 3타 (단계마다 피해 +15%) · 첫 번째 깨달음: 4타 (길게 눌렀다 떼면 차징 최대 ×3) · 두 번째 깨달음: 모든 타 피해 ×1.35 · ⚔️ 물리 피해",un:"화평을 제하라",us:"화영검 6자루가 성을 돌며 투사체를 막아요",ud:"8초간 불타는 화영검 6자루가 성 둘레를 돌아요 · 닿는 적에게 큰 피해 · 다가오는 적 투사체를 모두 막아요 · 받는 피해 -35% · ⚔️ 물리 + 🔥 불 · 👑 궁극기의 여운: 쓰고 나면 8초간 주는 피해 ×1.2"});
+Object.assign(HORSE.red,{bn:"큰 칼",bs:"가장 강한 적을 베고 5초 안에 다시 누르면 연계",bd:"1타: 가장 강한 적과 그 주변을 큰 칼로 베요 · 5초 안에 다시 누르면 마나 절반으로 다음 타 (피해 70%) · 누를 때마다 5초가 다시 채워져요 · 마지막 타를 치거나 5초가 지나면 그때 대기시간이 돌아요 · 말: 2타 · 말의 권능 카드 1장 이상: 3타 (단계마다 피해 +15%) · 말의 권능 장인(4단계): 4타 (길게 눌렀다 떼면 모을수록 강해져요 · 최대 ×5) · 두 번째 깨달음: 모든 타 피해 ×1.35 · 4타가 속성 공격으로 나가요 · ⚔️ 물리 피해",un:"화평을 제하라",us:"화영검 6자루가 성을 돌며 투사체를 막아요",ud:"8초간 불타는 화영검 6자루가 성 둘레를 돌아요 · 닿는 적에게 큰 피해 · 다가오는 적 투사체를 모두 막아요 · 받는 피해 -35% · ⚔️ 물리 + 🔥 불 · 👑 궁극기의 여운: 쓰고 나면 8초간 주는 피해 ×1.2"});
 Object.assign(HORSE.black,{bn:"해하지 말라 하더라",bs:"켜고 끄는 재생 보호막",bd:"누르면 켜지고 다시 누르면 꺼져요 · 켜 있는 동안 최대 체력 비례 보호막 (15% · 권능 단계마다 +5% · 4단계 40%) · 3초간 안 맞으면 초당 10%씩 다시 차요 · 켜 있는 동안 마나를 계속 써요 (초당 3 + 권능 단계) · 마나가 없으면 꺼져요",un:"심판의 저울",us:"약한 적은 곡식으로 흡수 · 강한 적은 방어력 감소",ud:"저울이 나타나 약한 일반 적(체력이 공격력 ×20 이하)은 곡식이 되어 흡수돼요 (곡식 1개당 체력·보호막 0.5% · 최대 25%) · 보스·정예 등 강한 적은 큰 피해 + 8초간 방어력·정신력이 크게 깎여요 · 👑 궁극기의 여운: 쓰고 나면 8초간 주는 피해 ×1.2"});
 Object.assign(HORSE.pale,{bn:"음부가 따르더라",bs:"(패시브) 청황색 말이 성을 돌며 영혼을 모아요",bd:"(패시브) 청황색 말이 성 주변을 돌아요 · 적을 쓰러뜨리면 영혼이 말 뒤를 따르는 음부로 들어가고 성 체력 0.2% 회복 (권능 단계마다 +0.1%) · 가끔 영혼 2~3개 (5% → 권능 4단계 20%) · 「그 수가 차기까지」 영혼 100개마다 성경 아이템 1개",un:"땅 사분의 일의 권세",us:"화면 4구역에 검·흉년·사망·짐승의 심판",ud:"10초간 화면이 4구역으로 나뉘고 2.5초마다 돌아요 · ① 검: 방어 무시 베기 ② 흉년: 회복 차단 ③ 사망: 체력 25% 이하 일반 적 처치 · 보스 받는 피해 +30% ④ 땅의 짐승: 열 뿔 짐승이 그 구역 적을 물어뜯어요 (조종할 수 없는 악한 짐승) · 끝나면 짐승이 불못에 던져지며 폭발하고, 모은 영혼만큼 모든 적을 심판해요 (영혼당 체력 0.3% 회복) · 👑 궁극기의 여운"});
 var ESK2={
@@ -4035,7 +4035,7 @@ ice_pale:["🧊","무게가 한 달란트나 되는 큰 우박","모든 적에�
 wind_pale:["⚡","번개와 우렛소리와 큰 지진","보스·정예 기절 (보스 1.5초 · 준비하던 궁극기도 끊김) + 낙뢰 · 6초간 적을 쓰러뜨리면 번개가 2마리에게 튀어요","(할렐루야) 영혼 100개를 채울 때마다 5초 무적 + 주는 피해 +30%"],
 poison_pale:["🗝️","사망과 음부의 열쇠를 가졌노니","1번: 음부의 문을 열어요 (8초간 모든 적 독 · 독으로 쓰러진 적 영혼 2배) / 다시 누르거나 8초가 지나면 문을 닫으며 들어온 영혼 수만큼 모든 적에게 독 폭발","(사망과 음부도 죽은 자들을 내주매) 독으로 쓰러뜨린 적은 영혼 +1 · 10초마다 성의 해로운 효과를 씻어요"]};
 for(var k2 in ESK2){var E2=ESK2[k2];if(ESK[k2]){ESK[k2].ic=E2[0];ESK[k2].sn=E2[1];ESK[k2].d=E2[2];ESK[k2].up=E2[3]}}
-var spellT0=spellT;spellT=function(g,i){var r=spellT0(g,i),k=g.horse,l=i,pre="";if(k==="white")pre="큰 활 피해 +"+(15*(l+1))+"% · 조준 -"+(.3*(l+1)).toFixed(1)+"초";else if(k==="red")pre="큰 칼 연계 3타 · 피해 +"+(15*(l+1))+"%";else if(k==="black")pre="보호막 최대 체력 "+[20,25,30,40][l]+"% · 초당 마나 "+(4+l);else if(k==="pale")pre="영혼 회복 "+(.3+.1*l).toFixed(1)+"% · 영혼 2~3개 확률 "+[8,12,16,20][l]+"%";return pre?[r[0],pre+" · "+r[1]]:r};
+var spellT0=spellT;spellT=function(g,i){var r=spellT0(g,i),k=g.horse,l=i,pre="";if(k==="white")pre="큰 활 피해 +"+(15*(l+1))+"% · 조준 -"+(.3*(l+1)).toFixed(1)+"초";else if(k==="red")pre="큰 칼 연계 "+(l>=3?"4":"3")+"타 · 피해 +"+(15*(l+1))+"%";else if(k==="black")pre="보호막 최대 체력 "+[20,25,30,40][l]+"% · 초당 마나 "+(4+l);else if(k==="pale")pre="영혼 회복 "+(.3+.1*l).toFixed(1)+"% · 영혼 2~3개 확률 "+[8,12,16,20][l]+"%";return pre?[r[0],pre+" · "+r[1]]:r};
 function vib(p){try{if(window.__vibOn!==false&&navigator.vibrate)navigator.vibrate(p)}catch(e){}}
 function rvG(g){if(!g.rv)g.rv={souls:0,sc:0,gs:0,gr:g.round,sw:[]};return g.rv}
 function rvLv(g){return Math.min(4,g.lv.spell||0)}
@@ -4066,14 +4066,15 @@ function rvBow(g){var R=rvG(g),Lk=R.lock;R.lock=null;if(!Lk)return;var P=rvP(g);
   if(R.loc&&R.loc.e>g.t){R.loc.x=m.x;R.loc.y=m.y}
   if(P==="fire_white"){if(R.gr!==g.round){R.gr=g.round;R.gs=0}R.gs=Math.min(10,R.gs+1)}});ev(g,"crit")}
 /* 붉은 말: 큰 칼 (계 6:4) · 5초 안에 다시 누르면 연계 (마나 절반 · 피해 70%) */
-function rvRedMax(g){return g.elem?4:rvLv(g)>=1?3:2}
+function rvRedMax(g){return rvLv(g)>=4?4:rvLv(g)>=1?3:2}
 function rvRedK(g){return (1+.15*rvLv(g))*(g.elem2?1.35:1)}
 function rvRed(g){var s=g.s,R=rvG(g),C=R.rc;
   if(C&&C.e>g.t&&C.n<rvRedMax(g)){if(C.n===3){R.rc4={t0:g.t};return true}var mc=rvOn(g,"rw")?0:s.mc*.5;if(g.mp<mc){noMp(g);return false}g.mp-=mc;C.n++;C.e=g.t+5;C.mx=rvRedMax(g);rvCut(g,rvSD(g)*6*.7*rvRedK(g),C.n);if(C.n>=rvRedMax(g))rvRedEnd(g);return true}
   if(g.sk>0)return false;if(g.mp<s.mc){noMp(g);return false}g.mp-=s.mc;ev(g,"skill");R.rc={n:1,e:g.t+5,hit:0,mx:rvRedMax(g)};rvCut(g,rvSD(g)*6*rvRedK(g),1);if(rvRedMax(g)<=1)rvRedEnd(g);return true}
-function rvCut(g,D,n){var R=rvG(g),P=rvP(g),m=rvTop(g);if(!m)return;var r=rvOn(g,"rl")?180:90,x=m.x,y=m.y;
-  vfx(g,{k:"slash",x:x,y:y,t:.45,r:r,a0:Math.random()*6.283});ring(g,x,y,r,"#ff7a3c",7,.4);part(g,x,y,26,"#ff9a3c",280,.5,4);g.shake=Math.max(g.shake,.2);ev(g,"slash");
-  eLiv(g).forEach(function(q){if(Math.hypot(q.x-x,q.y-y)<r+q.sz*.3){var k=1;if(P==="ice_red"&&q.frz>0)k*=2;if(P==="poison_red"&&q.poiT>0)k*=1.2;rvD(g,q,D*k*(q===m?1:q.boss?.6:1),null,1,0,1);if(P==="ice_red"&&q.frz>0)mkBurn(g,q,.4);if(rvOn(g,"rl"))q.shred=Math.min(.6,(q.shred||0)+.15);if(rvOn(g,"rp")){grApply(g,q,1,2);q.shred=Math.min(.5,(q.shred||0)+.25);q.poiT=Math.max(q.poiT||0,3);q.poiD=Math.max(q.poiD||0,q.mhp*(q.boss?.001:.01))}}});
+function rvEl(g,q,a,e1,e2,same,top){if(!e1){rvD(g,q,a,null,1,0,1);return}if(e1==="light")rvD(g,q,a,"light",1,0,1);else{rvD(g,q,a*.7,e1,0,0,1);rvD(g,q,a*.3,e1,1,0,1)}if(q.hp>0){elemOn(g,q,g.s,e1,a,1);if(e2)elemOn(g,q,g.s,e2,a*.6,same?1.6:1);if(top&&g.s.hx)hxOn(g,q,g.s,a,{})}}
+function rvCut(g,D,n,o){var R=rvG(g),P=rvP(g),m=rvTop(g);if(!m)return;var r=(rvOn(g,"rl")?260:135)*((o&&o.rm)||1),x=m.x,y=m.y,E1=(o&&o.el)||null,E2=(o&&o.el2)||null,SB=o&&o.same,EC=E1&&ECOL[E1]?ECOL[E1][1]:null;
+  vfx(g,{k:"slash",x:x,y:y,t:.45,r:r,a0:Math.random()*6.283});ring(g,x,y,r,EC||"#ff7a3c",7,.4);part(g,x,y,26,EC||"#ff9a3c",280,.5,4);if(E1)vfx(g,{k:"mtl",x:x,y:y,t:.9,r:r*.8,e:E1});g.shake=Math.max(g.shake,.2);ev(g,"slash");
+  eLiv(g).forEach(function(q){if(Math.hypot(q.x-x,q.y-y)<r+q.sz*.3){var k=1;if(P==="ice_red"&&q.frz>0)k*=2;if(P==="poison_red"&&q.poiT>0)k*=1.2;rvEl(g,q,D*k*(q===m?1:q.boss?.6:1),E1,E2,SB,q===m);if(P==="ice_red"&&q.frz>0)mkBurn(g,q,.4);if(rvOn(g,"rl"))q.shred=Math.min(.6,(q.shred||0)+.15);if(rvOn(g,"rp")){grApply(g,q,1,2);q.shred=Math.min(.5,(q.shred||0)+.25);q.poiT=Math.max(q.poiT||0,3);q.poiD=Math.max(q.poiD||0,q.mhp*(q.boss?.001:.01))}}});
   if(rvOn(g,"rp")){R.wp=R.wp||[];R.wp.push({x:x,y:y,e:R.rp})}
   if(P==="poison_red")g.hp=Math.min(g.maxhp,g.hp+D*.03);
   if(rvOn(g,"rf"))R.ren=(R.ren||0)+1;
@@ -4083,7 +4084,7 @@ function rvRedEnd(g){var R=rvG(g),P=rvP(g);if(P==="light_red"&&R.lastCut){var m=
   if(R.ren&&R.lastCut){rvAoe(g,R.lastCut.x,R.lastCut.y,150,rvED(g)*.25*R.ren,"fire",0,function(q){mkBurn(g,q,.5)});vfx(g,{k:"inferno",x:R.lastCut.x,y:R.lastCut.y,t:.8,r:150});rvTx(g,"🔥 연단 "+R.ren+"!","#ffb070");R.ren=0}
   R.rc=null;R.rc4=null;g.sk=g.s.skcd}
 function rvRel(g){if(!g)return;var R=g.rv;if(!R)return;
-  if(R.rc4){var h=Math.min(2,(g.t-R.rc4.t0)*(rvP(g)==="wind_red"?2:1));R.rc4=null;var C=R.rc;if(C){C.n=4;var k=1+h;rvCut(g,rvSD(g)*6*.7*k*rvRedK(g),4);if(rvP(g)==="wind_red"&&h>=2&&R.lastCut){rvAoe(g,R.lastCut.x,R.lastCut.y,120,rvSD(g)*4,"wind",0,function(q){mkStun(q,1)});vfx(g,{k:"pillar",x:R.lastCut.x,y:R.lastCut.y,t:.7,r:40});g.shake=.5}rvTx(g,"⚔️ 4타 차징 ×"+k.toFixed(1),"#ffd0a0");rvRedEnd(g)}}
+  if(R.rc4){var h=Math.min(3,(g.t-R.rc4.t0)*(rvP(g)==="wind_red"?2:1));R.rc4=null;var C=R.rc;if(C){C.n=4;var k=1+h*4/3,o={rm:1+h*.2};if(g.elem&&g.elem2){o.el=g.elem;o.el2=g.elem2;o.same=g.elem2===g.elem}rvCut(g,rvSD(g)*6*.7*k*rvRedK(g),4,o);if(h>=3&&R.lastCut){rvAoe(g,R.lastCut.x,R.lastCut.y,190,rvSD(g)*6*.35*rvRedK(g),o.el||null,o.el?0:1);vfx(g,{k:"wave",x:R.lastCut.x,y:R.lastCut.y,t:.6,r:190});g.shake=Math.max(g.shake,.5);rvTx(g,"💥 최대 차징!","#ffe08a",CY-120)}if(rvP(g)==="wind_red"&&h>=3&&R.lastCut){rvAoe(g,R.lastCut.x,R.lastCut.y,120,rvSD(g)*4,"wind",0,function(q){mkStun(q,1)});vfx(g,{k:"pillar",x:R.lastCut.x,y:R.lastCut.y,t:.7,r:40});g.shake=.5}rvTx(g,"⚔️ 4타 차징 ×"+k.toFixed(1),"#ffd0a0");rvRedEnd(g)}}
   if(R.ch){R.ch=null}
   if(R.sc2){rvScythe(g)}}
 /* 검은 말: 해하지 말라 하더라 (계 6:6) · 토글 보호막 */
@@ -5009,7 +5010,7 @@ function rvDraw(t){var R=g&&g.rv;if(!R||g.state!=="play")return;var i,H=g.horse,
   if(H==="pale"){var pa=R.ha||0,px=CX+Math.cos(pa)*66,py=CY+Math.sin(pa)*40;gl(px,py,22,"150,220,90",.5);sp("🐎",20,px,py);(R.sf||[]).forEach(function(f){var k=f.t/.7;gl(f.x+(px-f.x)*k,f.y+(py-f.y)*k,7,"200,255,170",.8*(1-k*.5))})}
   if(R.lock){R.lock.ts.forEach(function(m){if(!m)return;var k=Math.max(0,R.lock.t/R.lock.m);gx.strokeStyle="rgba(255,240,180,.95)";gx.lineWidth=2;gx.beginPath();gx.arc(m.x,m.y,18+22*k,0,7);gx.stroke();gx.beginPath();gx.moveTo(m.x-30,m.y);gx.lineTo(m.x-12,m.y);gx.moveTo(m.x+12,m.y);gx.lineTo(m.x+30,m.y);gx.moveTo(m.x,m.y-30);gx.lineTo(m.x,m.y-12);gx.moveTo(m.x,m.y+12);gx.lineTo(m.x,m.y+30);gx.stroke();txt("🎯 "+R.lock.t.toFixed(1),m.x,m.y-38,"bold 11px "+SF,"#fff3c4")})}
   /* 버튼 위 표시 */
-  if(H==="red"&&R.rc){var C=R.rc,mx=rvMx();txt("⚔️ "+C.n+"/"+mx+(R.rc4?" 차징!":" · "+Math.max(0,C.e-g.t).toFixed(1)+"초"),CX,CY+62,"bold 13px "+SF,"#ffd0a0");if(R.rc4){var h=Math.min(1,(g.t-R.rc4.t0)/2);gx.strokeStyle="#ffd23f";gx.lineWidth=4;gx.beginPath();gx.arc(bx,by,36,-Math.PI/2,-Math.PI/2+6.283*h);gx.stroke()}}
+  if(H==="red"&&R.rc){var C=R.rc,mx=rvMx();txt("⚔️ "+C.n+"/"+mx+(R.rc4?" 차징!":" · "+Math.max(0,C.e-g.t).toFixed(1)+"초"),CX,CY+62,"bold 13px "+SF,"#ffd0a0");if(R.rc4){var h=Math.min(1,(g.t-R.rc4.t0)*(rvP0()==="wind_red"?2:1)/3);gx.strokeStyle=h>=1?"#fff3a0":"#ffd23f";gx.lineWidth=4;gx.beginPath();gx.arc(bx,by,36,-Math.PI/2,-Math.PI/2+6.283*h);gx.stroke()}}
   if(H==="pale"){txt("👻 영혼 "+(R.souls||0)+"/100",CX,CY+62,"bold 12px "+SF,"#c8f59a")}
   if(R.ch){var c1=Math.min(1,(g.t-R.ch.t0)/4);gx.strokeStyle="#ffeb78";gx.lineWidth=4;gx.beginPath();gx.arc(ex,ey,30,-Math.PI/2,-Math.PI/2+6.283*(1-c1));gx.stroke();txt("⚡ 누르는 중",ex,ey-38,"bold 10px "+SF,"#ffeb78")}
   if(R.sc2){var c2=Math.min(1,(g.t-R.sc2.t0)/2);gx.strokeStyle="#ffb070";gx.lineWidth=4;gx.beginPath();gx.arc(ex,ey,30,-Math.PI/2,-Math.PI/2+6.283*c2);gx.stroke();txt("🌾 모으는 중 ×"+(1+.75*c2*2).toFixed(1),ex,ey-38,"bold 10px "+SF,"#ffd59a")}
@@ -5040,7 +5041,7 @@ function skBtn(x,y,r,o,t){var c=o.col||"200,220,255",lk=o.lock,rd=o.ready&&!lk;
   if(o.badge){gx.beginPath();gx.arc(x+r*.74,y-r*.74,9,0,7);gx.fillStyle="rgba(10,14,36,.88)";gx.fill();gx.strokeStyle="rgba("+c+",.45)";gx.lineWidth=.8;gx.stroke();sp(o.badge,11,x+r*.74,y-r*.74)}
   if(o.tag)hTxt(o.tag,x,y-r-8,"800 8.5px "+SF,"rgba(255,255,255,.75)")}
 function rvP0(){return g.elem&&g.elem2===g.elem&&g.horse?g.elem+"_"+g.horse:null}
-function rvMx(){var b=Math.min(3,1+Math.min(4,g.lv.spell||0));return b+(b===3&&g.elem2?1:0)}
+function rvMx(){var sp=g.lv.spell||0;return sp>=4?4:sp>=1?3:2}
 var H2=GL.H;
 function infoTabs(){var T=[["all","📋 전체"],["esk","🐎 속성 · 말"]],c=g.itab||"all";return '<div style="width:100%;display:flex;gap:6px">'+T.map(function(t){return '<button class="'+(t[0]===c?'ye':'uc sg')+'" style="flex:1;justify-content:center;margin:0;padding:7px 4px;font-size:13px;font-weight:700" onclick="gITab(\''+t[0]+'\')">'+t[1]+'</button>'}).join('')+'</div>'}
 /* 배낭 · 속성/말 탭: 가진 스킬을 "어떻게 쓰는지" 한눈에 */
@@ -5547,8 +5548,8 @@ function drawVq(L,t){var Q=g.vq;if(!Q||!Q.length)return;var base=L?LM:"source-ov
     for(var tr=0;tr<2;tr++){gx.beginPath();for(q=0;q<=3;q++){var an=rot+tr*1.0472+q*2.0944;if(q)gx.lineTo(v.x+Math.cos(an)*R*.8,v.y+Math.sin(an)*R*.8);else gx.moveTo(v.x+Math.cos(an)*R*.8,v.y+Math.sin(an)*R*.8)}gx.stroke()}
     if(v.k==="bossIn")for(k=0;k<3;k++){var ra=(a*1.4+k*.33)%1;arcStroke(v.x,v.y,R*(1+ra*1.6),0,7,3*(1-ra),v.c,f*(1-ra))}break;
   case"soul":var sy=v.y-a*48,sx=v.x+Math.sin(a*8+v.ph)*6;gl(sx,sy,11,"255,240,190",f*.9);gl(sx,sy,4,"255,255,255",f);break;
-  case"slash":var lead=v.a0+a*7.4,RR=v.r*(.5+.5*Math.min(1,a*2.2));if(g.qual){gx.fillStyle="rgba(255,110,30,"+f*.3+")";gx.beginPath();gx.arc(v.x,v.y,RR*1.04,lead-1.7,lead);gx.arc(v.x,v.y,RR*.7,lead,lead-1.7,true);gx.closePath();gx.fill();gx.fillStyle="rgba(255,220,150,"+f*.35+")";gx.beginPath();gx.arc(v.x,v.y,RR*1.02,lead-.6,lead);gx.arc(v.x,v.y,RR*.86,lead,lead-.6,true);gx.closePath();gx.fill()}for(k=0;k<3;k++)arcStroke(v.x,v.y,RR,lead-1.8+k*.25,lead,[38,20,7][k]*(.45+.55*f),["255,80,20","255,160,60","255,245,220"][k],[.35,.7,.95][k]*f);
-    var lx=v.x+Math.cos(lead)*RR,ly=v.y+Math.sin(lead)*RR;gl(lx,ly,44,"255,190,110",f);if(g.qual)for(k=0;k<3;k++)vp(lx,ly,(Math.random()-.5)*120,(Math.random()-.5)*120-30,.5,2.4,Math.random()<.5?"255,150,50":"255,220,120",0);break;
+  case"slash":var lead=v.a0+a*7.4,RR=v.r*(.5+.5*Math.min(1,a*2.2)),_sk=Math.max(1,v.r/90),_sp=Math.min(3.4,1.8+(_sk-1)*.7);if(g.qual&&_sk>1.1){gx.fillStyle="rgba(255,150,70,"+f*.12+")";gx.beginPath();gx.arc(v.x,v.y,v.r,0,6.283);gx.fill()}if(g.qual){gx.fillStyle="rgba(255,110,30,"+f*.3+")";gx.beginPath();gx.arc(v.x,v.y,RR*1.04,lead-_sp+.1,lead);gx.arc(v.x,v.y,RR*.7,lead,lead-_sp+.1,true);gx.closePath();gx.fill();gx.fillStyle="rgba(255,220,150,"+f*.35+")";gx.beginPath();gx.arc(v.x,v.y,RR*1.02,lead-.6,lead);gx.arc(v.x,v.y,RR*.86,lead,lead-.6,true);gx.closePath();gx.fill()}for(k=0;k<3;k++)arcStroke(v.x,v.y,RR,lead-_sp+k*.25,lead,[38,20,7][k]*_sk*(.45+.55*f),["255,80,20","255,160,60","255,245,220"][k],[.35,.7,.95][k]*f);
+    var lx=v.x+Math.cos(lead)*RR,ly=v.y+Math.sin(lead)*RR;gl(lx,ly,44*_sk,"255,190,110",f);if(g.qual)for(k=0;k<3;k++)vp(lx,ly,(Math.random()-.5)*120,(Math.random()-.5)*120-30,.5,2.4,Math.random()<.5?"255,150,50":"255,220,120",0);break;
   case"swing":var ld=v.a0+a*6.5;if(g.qual){gx.fillStyle="rgba("+v.c+","+f*.22+")";gx.beginPath();gx.arc(v.x,v.y,v.r+6,ld-1.2,ld);gx.arc(v.x,v.y,v.r*.72,ld,ld-1.2,true);gx.closePath();gx.fill()}arcStroke(v.x,v.y,v.r,ld-1.3,ld,16*f+2,v.c,.35*f);arcStroke(v.x,v.y,v.r,ld-1,ld,5*f+1,"255,255,255",.9*f);break;
   case"blade":var p=Math.min(1,a/.24),ty=-40+(v.y+14+40)*p*p,ba=p<1?1:Math.min(1,f/.55),BL=210;gx.globalCompositeOperation="source-over";gx.globalAlpha=ba;
     if(p<1){gx.strokeStyle="rgba(255,200,140,.5)";gx.lineWidth=2;for(k=-2;k<=2;k++){gx.beginPath();gx.moveTo(v.x+k*9,ty-BL-60);gx.lineTo(v.x+k*9,ty-BL-160);gx.stroke()}}
